@@ -37,9 +37,4 @@ public class Barista extends Person {
     }
 
 
-    // hash table w/string as the key and the value is another hashtable that has each ingredient and how much of it is needed to make that drink
-    // another hash table that is returned
-    // makeDrink would take in the key of the hash table 
-    // big menu - the  
-    // little menu - 
 }
