@@ -22,6 +22,10 @@ public void printIngredients() {
     }
 
 } 
+//Getter for the name
+public String getName(){
+    return name;
+}
 
 public static void main(String[] args) {
     //Latte Drink
