@@ -18,7 +18,7 @@ public class Barista extends Person {
     }
 
     public String toString() {
-        return "Let's get started " + this.name + "! Type 'go' to start your adventure!";
+        return "Let's get started " + getName() + "! Type 'go' to start your adventure!";
     }
 
     public static void main(String[] args) {
