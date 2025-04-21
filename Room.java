@@ -84,6 +84,16 @@ public class Room {
         return ingre_2;
     }
 
+
+    // right now used for debugging
+    /**
+     * defines the room object as a string
+     * @return roomName
+     */
+    public String toString() {
+        return roomName;
+    }
+
     
 
 
