@@ -17,10 +17,14 @@ public class Barista extends Person {
         // let player know what direction they are in
     }
 
+
+    // will be in main class
     public String toString() {
         return "Let's get started " + getName() + "! Type 'go' to start your adventure!";
     }
 
+
+    // debugging purposes
     public static void main(String[] args) {
         System.out.println("Welcome to the game! Enter the name for your barista!");
         String barista_name = input.nextLine();

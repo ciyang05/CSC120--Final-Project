@@ -21,7 +21,7 @@ public class Room {
 
 
     /**
-     * constructor with room name, description, and one ingredient
+     * full constructor for room
      * @param rName
      * @param rDescription
      * @param ingre_1
@@ -30,21 +30,6 @@ public class Room {
         this.roomName = rName;
         this.description = rDescription;
         this.ingre = ingre_1;
-    }
-
-    /**
-     * full constructor for room
-     * @param rName
-     * @param rDescription
-     * @param ingre_1
-     * @param ingre_2
-     */
-    public Room(String rName, String rDescription, Ingredient ingre_1, Ingredient ingre_2) {
-        this.roomName = rName;
-        this.description = rDescription;
-        this.ingre = ingre_1;
-        this.ingre_2 = ingre_2;
-
     }
 
 
