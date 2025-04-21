@@ -15,7 +15,7 @@ public void addIngredient(String name, String units, double amount){
     ingredients.add(new Ingredient(name, units, amount));
 }
 public void printIngredients() {
-    System.out.println(name + "Ingredeints:");
+    System.out.println(name +" " + "Ingredeints:");
     for (Ingredient i: ingredients ){
         System.out.println();
         System.out.println(i);
