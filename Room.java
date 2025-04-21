@@ -6,7 +6,6 @@ public class Room {
     private String roomName;
     private String description;
     private Ingredient ingre;
-    private Ingredient ingre_2;
 
 
     /**
@@ -53,21 +52,13 @@ public class Room {
 
 
     /**
-     * accessor for ingredient 1
+     * accessor for ingredient
      * @return ingre
      */
     public Ingredient getIngre() {
         return ingre;
     }
 
-    
-    /**
-     * accessor for ingredient 2
-     * @return ingre_2
-     */
-    public Ingredient getIngre_2(){
-        return ingre_2;
-    }
 
 
     // right now used for debugging

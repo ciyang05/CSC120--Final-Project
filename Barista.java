@@ -10,12 +10,20 @@ public class Barista extends Person {
         super(name);
     }
 
+
+    
     public void move() {
         System.out.println("You are facing south" + "\n" + "Where would you like to go? You can move north, east, south, or west.");
         input.nextLine();
 
         // let player know what direction they are in
     }
+
+
+
+
+
+
 
 
     // will be in main class
