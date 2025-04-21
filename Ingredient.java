@@ -13,8 +13,9 @@ public class Ingredient {
 
 
     // right now used for debugging
+    @Override
     public String toString() {
-        return name + units + amount;
+        return  amount +" " + units + " " + name;
     }
-
+    
 }
