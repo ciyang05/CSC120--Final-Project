@@ -16,13 +16,13 @@ public class Manager extends Person{
         super(Berta);
         // this.x = x;
         // this.y = y;
-        this.managerLocation = "Forest, Pond";
+        this.managerLocation = managerLocation;
     }
 
 
     //Checking if the barista is at the same location as manager
     public boolean sameLocation(Barista barista){
-        if (barista.getLocation == managerLocation){ //if the locations are the same
+        if (barista.getLocation().equals(managerLocation)){ //if the locations are the same
             return true; //return true
         }
         else{ //if the locations are not the same
@@ -40,7 +40,7 @@ public class Manager extends Person{
             String response = input.nextLine();//user inputs answer to question
 
             if (response.trim().equals(correctAnswer)){ //if the user's response is the correct answer
-                giveHint(barista, drink); //call the giveHint method which print the clue according to the drink
+                giveHint(drink); //call the giveHint method which print the clue according to the drink
             }
             else { //if answers is wrong, print wrong
                 System.out.println("Wrong answer, no hint for you!");
@@ -53,13 +53,13 @@ public class Manager extends Person{
 
     //Gives hint according to the drink
     public void giveHint(Drink drink){
-        if(drink.getName() == "Matcha"){ //if the drink chosen is the same as matcha
+        if(drink.getName().equals("latte")){ //if the drink chosen is the same as matcha
             System.out.println("The ingredients for " + drink.getName() + " are in the "); //give hint
         }
-        else if(drink.getName()== "Iced Coffee"){
+        else if(drink.getName()== "matcha"){
             System.out.println("The ingredients for " + drink.getName() + " are in the ");
         }
-        else if (drink.getName() == "Tea"){
+        else if (drink.getName() == "americano"){
             System.out.println("The ingredients for " + drink.getName() + " are in the "); //add drinks as needed, not finished yet
         }
         else{
