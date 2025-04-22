@@ -1,4 +1,6 @@
 import java.util.Scanner;
+import java.util.List;
+import java.util.Arrays;
 
 
 public class Manager extends Person{
@@ -8,21 +10,21 @@ public class Manager extends Person{
     private int x, y; //location coordinates
     private String question = "what is"; //question
     private String correctAnswer = "night"; //answer
-    private String managerLocation; //getting all the locations (might need to change)
+    private List<String> mLocations; //getting all the locations (might need to change)
 
 
     //Constructor that also gives Berta her positions
-    public Manager (String Berta, String managerLocation) {
+    public Manager (String Berta, List<String> mLocations) {
         super(Berta);
         // this.x = x;
         // this.y = y;
-        this.managerLocation = managerLocation;
+        this.mLocations = mLocations;
     }
 
 
     //Checking if the barista is at the same location as manager
     public boolean sameLocation(Barista barista){
-        if (barista.getLocation().equals(managerLocation)){ //if the locations are the same
+        if (barista.getLocation().equals(mLocations)){ //if the locations are the same
             return true; //return true
         }
         else{ //if the locations are not the same
@@ -39,7 +41,7 @@ public class Manager extends Person{
 
             String response = input.nextLine();//user inputs answer to question
 
-            if (response.trim().equals(correctAnswer)){ //if the user's response is the correct answer
+            if (response.trim().equalsIgnoreCase(correctAnswer)){ //if the user's response is the correct answer; IgnoreCase ignores the caps and such
                 giveHint(drink); //call the giveHint method which print the clue according to the drink
             }
             else { //if answers is wrong, print wrong
@@ -56,14 +58,19 @@ public class Manager extends Person{
         if(drink.getName().equals("latte")){ //if the drink chosen is the same as matcha
             System.out.println("The ingredients for " + drink.getName() + " are in the "); //give hint
         }
-        else if(drink.getName()== "matcha"){
+        else if(drink.getName().equals("matcha")){
             System.out.println("The ingredients for " + drink.getName() + " are in the ");
         }
-        else if (drink.getName() == "americano"){
+        else if (drink.getName().equals("americano")){
             System.out.println("The ingredients for " + drink.getName() + " are in the "); //add drinks as needed, not finished yet
         }
         else{
             return;
         }
+    }
+
+    public static void main(String[] args) {
+        List<String> mLocations = Arrays.asList("Forest, Pond");
+        Manager manager = new Manager("Berta", mLocations);
     }
 }
