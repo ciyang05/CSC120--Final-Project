@@ -6,6 +6,20 @@ public class Room {
     private String roomName;
     private String description;
     private Ingredient ingre;
+    private Person aPerson;
+
+
+    /**
+     * constructor with room name, room description, and person
+     * @param rName
+     * @param rDescription
+     * @param anyPerson
+     */
+    public Room(String rName, String rDescription, Person anyPerson ) {
+        this.roomName = rName;
+        this.description = rDescription;
+        this.aPerson = anyPerson;
+    }
 
 
     /**
@@ -60,6 +74,14 @@ public class Room {
     }
 
 
+    /**
+     * accesses the Person (barista or manager)
+     * @return aPerson
+     */
+    public Person getPerson() {
+        return aPerson;
+    }
+
 
     // right now used for debugging
     /**
@@ -69,7 +91,6 @@ public class Room {
     public String toString() {
         return roomName;
     }
-
     
 
 
