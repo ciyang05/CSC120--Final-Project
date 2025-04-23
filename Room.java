@@ -7,6 +7,7 @@ public class Room {
     private String description;
     private Ingredient ingre;
     private Person aPerson;
+    private [][] location;
 
 
     /**
@@ -15,7 +16,7 @@ public class Room {
      * @param rDescription
      * @param anyPerson
      */
-    public Room(String rName, String rDescription, Person anyPerson ) {
+    public Room(String rName, String rDescription, Person anyPerson) {
         this.roomName = rName;
         this.description = rDescription;
         this.aPerson = anyPerson;
@@ -88,10 +89,21 @@ public class Room {
      * defines the room object as a string
      * @return roomName
      */
+    // public String toString() {
+    //     return roomName;
+    // }
+
     public String toString() {
-        return roomName;
+        return "You are in " + this.roomName + this.description;
     }
     
+
+
+
+    public static void main(String[] args) {
+        Room myRoom = new Room("Chiashi's Dorm", "This is Chiashi's Dorm");
+        System.out.println(myRoom);
+    }
 
 
 }

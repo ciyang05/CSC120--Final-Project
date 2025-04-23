@@ -3,12 +3,11 @@ import java.util.Arrays;
 public class Map {
 
     private Room[][] arrayMap;
-    Barista myBarista;
-    private Room currentRo;
+    // Barista myBarista;
+    // private Room currentRo;
     
     public Map() {
         this.arrayMap = new Room[3][3];
-        this.myBarista = new Barista("Pepper", 0, 0);
 
 
         arrayMap[0][0] = new Room("Oak & Ember Cafe", "You are in the Oak & Ember Cafe");
@@ -33,24 +32,20 @@ public class Map {
         return arrayMap;
     }
 
-    public Barista getBarista() {
-        return myBarista;
-    }
-
-    public Room getRoom() {
-        return currentRo;
-    }
+    // public Room getRoom() {
+    //     return currentRo;
+    // }
 
 
-    String deepToString() {
-        return "You are in the " + currentRo;
-    }
+    // String deepToString() {
+    //     return "You are in the " + currentRo;
+    // }
 
 
-    public static void main(String[] args) {
-        Map myMap = new Map();
-        getRoom() = myMap.getArray_Map()[0][1];
-        System.out.println(currentRo);
-    }
+    // public static void main(String[] args) {
+    //     Map myMap = new Map();
+    //     getRoom() = myMap.getArray_Map()[0][1];
+    //     System.out.println(currentRo);
+    // }
 
 }
