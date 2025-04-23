@@ -101,7 +101,7 @@ public class Barista extends Person {
                 rowIndex = tempRow;
                 System.out.println("new rowIndex:" + rowIndex);
                 Room currentRoom = bMap.getArray_Map()[rowIndex][getCol()];
-                System.out.println("You are now in room" + currentRoom.toString())
+                System.out.println("You are now in room" + currentRoom.toString());
             } 
             else {
                 System.out.println("invalid tempRow. did not move south");
