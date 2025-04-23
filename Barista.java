@@ -150,22 +150,22 @@ public class Barista extends Person {
 
 
     // debugging purposes
-    public static void main(String[] args) {
-        System.out.println("Welcome to the game!");
-        Map myMap = new Map();
-        String startGame = input.nextLine().toLowerCase();
-        if (startGame.equals("go")) {
+    // public static void main(String[] args) {
+    //     System.out.println("Welcome to the game!");
+    //     Map myMap = new Map();
+    //     String startGame = input.nextLine().toLowerCase();
+    //     if (startGame.equals("go")) {
 
-            // while it is false, once it is true = breaks loop
-            while (!getBarista().getQuit()) {
-                getBarista().move();
-            }
-        } else {
-            System.out.println("Try answering again. Please enter 'go' or 'Go'");
-            String start = input.nextLine();
-        }
+    //         // while it is false, once it is true = breaks loop
+    //         while (!getBarista().getQuit()) {
+    //             getBarista().move();
+    //         }
+    //     } else {
+    //         System.out.println("Try answering again. Please enter 'go' or 'Go'");
+    //         String start = input.nextLine();
+    //     }
 
-    }
+    // }
 
     // 
 

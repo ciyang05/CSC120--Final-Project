@@ -4,6 +4,7 @@ public class Map {
 
     private Room[][] arrayMap;
     Barista myBarista;
+    private Room currentRo;
     
     public Map() {
         this.arrayMap = new Room[3][3];
@@ -36,11 +37,20 @@ public class Map {
         return myBarista;
     }
 
-    
+    public Room getRoom() {
+        return currentRo;
+    }
 
-    // public static void main(String[] args) {
-    //     Map myMap = new Map();
-    //     System.out.println(Arrays.deepToString(myMap.arrayMap));
-    // }
+
+    String deepToString() {
+        return "You are in the " + currentRo;
+    }
+
+
+    public static void main(String[] args) {
+        Map myMap = new Map();
+        getRoom() = myMap.getArray_Map()[0][1];
+        System.out.println(currentRo);
+    }
 
 }
