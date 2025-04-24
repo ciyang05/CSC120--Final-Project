@@ -13,7 +13,7 @@ public class Manager extends Person{
     private Room[][] arrayMap; // setting location for manager
 
     //Constructor that also gives Berta her positions
-    public Manager (String Berta, List<String> mLocations) {
+    public Manager (String Berta) {
         super(Berta);
         // this.x = x;
         // this.y = y;
@@ -25,7 +25,7 @@ public class Manager extends Person{
     }
 
     public String getLocation(Barista barista){
-        
+        return 
 
     }
 
@@ -77,10 +77,10 @@ public class Manager extends Person{
         }
     }
 
-    public static void main(String[] args) {
-        List<String> mLocations = Arrays.asList("Forest, Pond");
-        Manager manager = new Manager("Berta", mLocations);
-    }
+    // public static void main(String[] args) {
+    //     List<String> mLocations = Arrays.asList("Forest, Pond");
+    //     Manager manager = new Manager("Berta", mLocations);
+    // }
 }
 
 //make a map but for the barrista so it sets the barrista's location
