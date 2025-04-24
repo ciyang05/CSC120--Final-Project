@@ -1,5 +1,4 @@
 import java.util.Scanner;
-import java.util.List;
 import java.util.Arrays;
 
 
@@ -11,6 +10,7 @@ public class Manager extends Person{
     private String correctAnswer = "night"; //answer
     // private List<String> mLocations; //getting all the locations (might need to change)
     private Room[][] arrayMap; // setting location for manager
+     
 
     //Constructor that also gives Berta her positions
     public Manager (String Berta) {
@@ -24,15 +24,15 @@ public class Manager extends Person{
 
     }
 
-    public String getLocation(Barista barista){
-        return 
+    public Room getLocation(Barista barista){
+        return getLocation;
 
     }
 
 
     //Checking if the barista is at the same location as manager
     public boolean sameLocation(Barista barista){
-        if (barista.getLocation().equals(arrayMap)){ //if the locations are the same
+        if (barista.cRoom().equals(arrayMap)){ //if the locations are the same
             return true; //return true
         }
         else{ //if the locations are not the same

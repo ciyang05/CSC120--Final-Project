@@ -1,48 +1,47 @@
-// this class will initialize the rooms that barista can go to
+import java.util.Arrays;
 
 public class Room {
     
     // Attributes 
     private String roomName;
-    private String description;
     private Ingredient ingre;
     private Person aPerson;
+    private int[] location = new int[2];
 
 
     /**
-     * constructor with room name, room description, and person
+     * constructor with room name and person
      * @param rName
-     * @param rDescription
      * @param anyPerson
      */
-    public Room(String rName, String rDescription, Person anyPerson ) {
+    public Room(String rName, Person anyPerson) {
         this.roomName = rName;
-        this.description = rDescription;
         this.aPerson = anyPerson;
     }
 
 
     /**
-     * constructor with just room name and description, for when room does not have ingredients 
+     * constructor with just room name, for when room does not have ingredients 
      * @param rName
-     * @param rDescription
      */
-    public Room(String rName, String rDescription) {
+    public Room(String rName) {
         this.roomName = rName;
-        this.description = rDescription;
     }
 
 
     /**
-     * full constructor for room
+     * full constructor for room 
      * @param rName
-     * @param rDescription
      * @param ingre_1
      */
-    public Room(String rName, String rDescription, Ingredient ingre_1) {
+    public Room(String rName, Ingredient ingre_1) {
         this.roomName = rName;
-        this.description = rDescription;
         this.ingre = ingre_1;
+    }
+
+
+    public Room(String string, String string2, Person person) {
+        //TODO Auto-generated constructor stub
     }
 
 
@@ -52,15 +51,6 @@ public class Room {
      */
     public String getName() {
         return roomName;
-    }
-
-
-    /**
-     * accessor for room description
-     * @return description
-     */
-    public String getDescrip() {
-        return description;
     }
 
 
@@ -88,10 +78,33 @@ public class Room {
      * defines the room object as a string
      * @return roomName
      */
+    // public String toString() {
+    //     return roomName;
+    // }
+
     public String toString() {
-        return roomName;
+        return "You are now at " + this.roomName;
+    }
+
+
+    public void setLocation(int row, int col) {
+        this.location[0] = row;
+        this.location[1] = col;
     }
     
+
+    public String getIndicies() {
+        return Arrays.toString(location);
+    }
+
+
+
+
+
+    // public static void main(String[] args) {
+    //     Room myRoom = new Room("Chiashi's Dorm", "This is Chiashi's Dorm");
+    //     System.out.println(myRoom);
+    // }
 
 
 }
