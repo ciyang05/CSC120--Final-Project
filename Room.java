@@ -4,7 +4,10 @@ public class Room {
     
     // Attributes 
     private String roomName;
-    private Ingredient ingre;
+    private Ingredient ingre_1;
+    private Ingredient ingre_2;
+    private Ingredient ingre_3;
+    private Ingredient ingre_4;
     private Person aPerson;
     private int[] location = new int[2];
 
@@ -14,10 +17,10 @@ public class Room {
      * @param rName
      * @param anyPerson
      */
-    public Room(String rName, Person anyPerson) {
-        this.roomName = rName;
-        this.aPerson = anyPerson;
-    }
+    // public Room(String rName, Person anyPerson) {
+    //     this.roomName = rName;
+    //     this.aPerson = anyPerson;
+    // }
 
 
     /**
@@ -30,13 +33,29 @@ public class Room {
 
 
     /**
-     * full constructor for room 
+     * constructor for room w/2 ingredients 
+     * @param rName
+     * @param ingre
+     * @param ingre2
+     */
+    public Room(String rName, Ingredient ingre, Ingredient ingre2) {
+        this.roomName = rName;
+        this.ingre_1 = ingre;
+        this.ingre_2 = ingre2;
+    }
+
+
+    /**
+     * full constructor for room w/multiple ingredients 
      * @param rName
      * @param ingre_1
      */
-    public Room(String rName, Ingredient ingre_1) {
+    public Room(String rName, Ingredient ingre, Ingredient ingre2, Ingredient ingre3, Ingredient ingre4) {
         this.roomName = rName;
-        this.ingre = ingre_1;
+        this.ingre_1 = ingre;
+        this.ingre_2 = ingre2;
+        this.ingre_3 = ingre3;
+        this.ingre_4 = ingre4;
     }
 
 
@@ -51,11 +70,23 @@ public class Room {
 
 
     /**
-     * accessor for ingredient
+     * accessor for ingredient 1
      * @return ingre
      */
-    public Ingredient getIngre() {
-        return ingre;
+    public Ingredient getIngre1() {
+        return ingre_1;
+    }
+
+    public Ingredient getIngre2() {
+        return ingre_2;
+    }
+
+    public Ingredient getIngre3() {
+        return ingre_3;
+    }
+
+    public Ingredient getIngre4() {
+        return ingre_4;
     }
 
 
@@ -63,19 +94,10 @@ public class Room {
      * accesses the Person (barista or manager)
      * @return aPerson
      */
-    public Person getPerson() {
-        return aPerson;
-    }
-
-
-    // right now used for debugging
-    /**
-     * defines the room object as a string
-     * @return roomName
-     */
-    // public String toString() {
-    //     return roomName;
+    // public Person getPerson() {
+    //     return aPerson;
     // }
+
 
     public String toString() {
         return "You are now at " + this.roomName;
@@ -96,10 +118,6 @@ public class Room {
 
 
 
-    // public static void main(String[] args) {
-    //     Room myRoom = new Room("Chiashi's Dorm", "This is Chiashi's Dorm");
-    //     System.out.println(myRoom);
-    // }
 
 
 }

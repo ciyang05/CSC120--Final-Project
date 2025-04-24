@@ -1,4 +1,4 @@
-// import java.util.ArrayList;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Barista extends Person {
@@ -13,10 +13,12 @@ public class Barista extends Person {
     // if player enters quit
     private boolean quitFlag = false;
 
+    // related to map 
     private Map myMap;
     private Room currentRoom;
 
-    // private boolean hasIngredients;
+    // will hold ingredients that barista grabs
+    private ArrayList<Ingredient> baristaIngre;
 
    
     /**
@@ -27,6 +29,7 @@ public class Barista extends Person {
         super(name);
         this.myMap = new Map();
         this.currentRoom = myMap.getArray_Map()[0][0];
+        this.baristaIngre = new ArrayList<>();
     }
 
 
@@ -73,6 +76,7 @@ public class Barista extends Person {
 
     
     public void move() {
+        
         System.out.println("Where would you like to go? Your options are north, east, south, or west.");
         System.out.println("If you would like to quit the game, type 'quit'.");
         String direction = input.nextLine().toLowerCase();
@@ -85,15 +89,16 @@ public class Barista extends Person {
 
 
         if (direction.equals("north")) {
-            System.out.println(currentRoom.getIndicies());
+            System.out.println("The indicies before moving are " + currentRoom.getIndicies());
             int tempRow = getRow() - 1;
             System.out.println("this is tempRow:" + tempRow);
+            
             if ((tempRow <= myMap.getMaxRow()) && (tempRow >= myMap.getLeastRow())) {
                 System.out.println("valid tempRow");
                 rowIndex = tempRow;
                 System.out.println("new rowIndex:" + rowIndex);
                 System.out.println("current colIndex:" + colIndex);
-                currentRoom = myMap.getArray_Map()[getRow()][getCol()];
+                currentRoom = myMap.getArray_Map()[rowIndex][colIndex];
                 System.out.println(currentRoom.toString());
                 System.out.println("Current room indicies" + currentRoom.getIndicies());
             } 
@@ -104,15 +109,16 @@ public class Barista extends Person {
 
 
         if (direction.equals("south")) {
-            System.out.println(currentRoom.getIndicies());
+            System.out.println("The indicies before moving are " + currentRoom.getIndicies());
             int tempRow = getRow() + 1;
             System.out.println("this is tempRow:" + tempRow);
+            
             if ((tempRow <= myMap.getMaxRow()) && (tempRow >= myMap.getLeastRow())) {
                 System.out.println("valid tempRow");
                 rowIndex = tempRow;
                 System.out.println("new rowIndex:" + rowIndex);
                 System.out.println("current colIndex:" + colIndex);
-                currentRoom = myMap.getArray_Map()[getRow()][getCol()];
+                currentRoom = myMap.getArray_Map()[rowIndex][colIndex];
                 System.out.println(currentRoom.toString());
                 System.out.println("Current room indicies" + currentRoom.getIndicies());
             } 
@@ -123,15 +129,16 @@ public class Barista extends Person {
 
 
         if (direction.equals("west")) {
-            System.out.println(currentRoom.getIndicies());
+            System.out.println("The indicies before moving are " + currentRoom.getIndicies());
             int tempCol = getCol() - 1;
             System.out.println("this is tempCol:" + tempCol);
+            
             if ((tempCol <= myMap.getMaxCol()) && (tempCol >= myMap.getLeastCol())) {
                 System.out.println("valid tempCol");
                 colIndex = tempCol;
                 System.out.println("new colIndex:" + colIndex);
                 System.out.println("current rowIndex:" + rowIndex);
-                currentRoom = myMap.getArray_Map()[getRow()][getCol()];
+                currentRoom = myMap.getArray_Map()[rowIndex][colIndex];
                 System.out.println(currentRoom.toString());
                 System.out.println("Current room indicies" + currentRoom.getIndicies());
             } 
@@ -142,27 +149,47 @@ public class Barista extends Person {
 
         
         if (direction.equals("east")) {
-            System.out.println(currentRoom.getIndicies());
+            System.out.println("The indicies before moving are " + currentRoom.getIndicies());
             int tempCol = getCol() + 1;
             System.out.println("this is tempCol:" + tempCol);
+            
             if ((tempCol <= myMap.getMaxCol()) && (tempCol >= myMap.getLeastCol())) {
                 System.out.println("valid tempCol");
                 colIndex = tempCol;
                 System.out.println("new colIndex:" + colIndex);
                 System.out.println("current rowIndex:" + rowIndex);
-                currentRoom = myMap.getArray_Map()[getRow()][getCol()];
+                currentRoom = myMap.getArray_Map()[rowIndex][colIndex];
                 System.out.println(currentRoom.toString());
                 System.out.println("Current room indicies" + currentRoom.getIndicies());
             } 
             else {
                 System.out.println("invalid tempCol. did not move east");
             }
+
         }
     }
 
 
+    public void grabIngre() {
+    
+        String ingre_1 = (currentRoom.getIngre1().toString());
+        String ingre_2 = (currentRoom.getIngre2().toString());
+        String ingre_3 = (currentRoom.getIngre3().toString());
+        String ingre_4 = (currentRoom.getIngre4().toString());
+
+        if 
+    }
+
 
     
+
+
+
+
+
+
+
+
 
     // will be in main class
     public String toString() {

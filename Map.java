@@ -1,4 +1,4 @@
-import java.util.Arrays;
+// import java.util.Arrays;
 
 public class Map {
 
@@ -17,25 +17,25 @@ public class Map {
         arrayMap[0][0].setLocation(0,0);
 
 
-        arrayMap[0][1] = new Room("Willowhust Forest", new Ingredient("Caramel Syrup", "pumps", 2));
+        arrayMap[0][1] = new Room("Willowhust Forest");
         arrayMap[0][1].setLocation(0,1);
 
-        arrayMap[0][2] = new Room("Willowhush Forest");
+        arrayMap[0][2] = new Room("Willowhush Forest", new Ingredient("Caramel Syrup", "pumps", 2), new Ingredient("Brown Sugar", "teaspoons", 10), new Ingredient("Whole Milk", "Cups", 0.5), new Ingredient("Espresso", "shots", 2));
         arrayMap[0][2].setLocation(0,2);
 
-        arrayMap[1][0] = new Room("Stillmist Valley", new Ingredient("Brown Sugar", "teaspoons", 10));
+        arrayMap[1][0] = new Room("Stillmist Valley");
         arrayMap[1][0].setLocation(1,0);
 
         arrayMap[1][1] = new Room("Willowhush Forest");
         arrayMap[1][1].setLocation(1,1);
 
-        arrayMap[1][2] = new Room("Brooknest Cavern", new Ingredient("Whole Milk", "cups", 0.5));
+        arrayMap[1][2] = new Room("Brooknest Cavern", new Ingredient("Espresso", "shots", 3), new Ingredient("Water", "Cups", 0.25));
         arrayMap[1][2].setLocation(1,2);
 
         arrayMap[2][0] = new Room("Stillmist Valley");
         arrayMap[2][0].setLocation(2,0);
 
-        arrayMap[2][1] = new Room("Moonrest Cove", new Ingredient("Espresso", "shots", 2));
+        arrayMap[2][1] = new Room("Moonrest Cove", new Ingredient("Vanilla Syrup", "pumps", 2), new Ingredient("Normal Sugar", "teaspoons", 10), new Ingredient("Oat Milk", "Cups", 0.5), new Ingredient("Matcha Powder", "teaspoons", 3));
         arrayMap[2][1].setLocation(2,1);
 
         arrayMap[2][2] = new Room("Brooknest Cavern");
@@ -69,11 +69,5 @@ public class Map {
         return leastCol;
     }
 
-
-    // public static void main(String[] args) {
-    //     Map myMap = new Map();
-    //     getRoom() = myMap.getArray_Map()[0][1];
-    //     System.out.println(currentRo);
-    // }
 
 }
