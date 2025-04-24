@@ -16,11 +16,14 @@ public class Barista extends Person {
     // related to map 
     private Map myMap;
     private Room currentRoom;
+    
+    private String answer;
 
     // will hold ingredients that barista grabs
     private ArrayList<Ingredient> baristaIngre;
-
    
+
+
     /**
      * constructor for barista
      * @param name
@@ -68,13 +71,28 @@ public class Barista extends Person {
         return myMap;
     }
 
-    
+    /**
+     * accesses the player's current room
+     * @return currentRoom
+     */
     public Room getCurrentRoom() {
         return currentRoom;
     }
 
 
+    // public String getAnswer() {
+    //     return answer;
+    // }
+
+
+    // public Drink talk() {
+    //     if ()
+    // } 
+
+
     
+
+    // fully works right now!
     public void move() {
         
         System.out.println("Where would you like to go? Your options are north, east, south, or west.");
@@ -162,6 +180,13 @@ public class Barista extends Person {
                 System.out.println(currentRoom.toString());
                 System.out.println("Current room indicies" + currentRoom.getIndicies());
             } 
+
+            if ((currentRoom.getIndicies().equals("[0, 2]")) || (currentRoom.getIndicies().equals("[1, 2]")) || (currentRoom.getIndicies().equals("[2, 1]"))) {
+                System.out.println("The " + currentRoom.getName() + " has ingredients for a drink. Would you like to pick it up?\n If so, type 'grab'.");
+                answer = input.nextLine().toLowerCase();
+                grabIngre(new Drink("latte"));
+            }
+
             else {
                 System.out.println("invalid tempCol. did not move east");
             }
@@ -170,20 +195,35 @@ public class Barista extends Person {
     }
 
 
-    public void grabIngre() {
-    
-        String ingre_1 = (currentRoom.getIngre1().toString());
-        String ingre_2 = (currentRoom.getIngre2().toString());
-        String ingre_3 = (currentRoom.getIngre3().toString());
-        String ingre_4 = (currentRoom.getIngre4().toString());
-
-        if 
-    }
+    // not tested yet
+    // Drink custDrink is a placeholder for the actual drink that will be passed in as a parameter when using this method
+    public void grabIngre(Drink custDrink) {
+        // if ((currentRoom.getIndicies() == "[0, 2]") || (currentRoom.getIndicies() == "[1, 2]") || (currentRoom.getIndicies() == "[2, 1]")) {
+        //     System.out.println("The " + currentRoom.getName() + " has ingredients for a drink. Would you like to pick it up?\n If so, type 'grab'.");
+        //     String answer = input.nextLine().toLowerCase();
 
 
-    
-
-
+            // testing method
+            if ((answer.equals("grab")) && (!baristaIngre.contains(custDrink.getIngredients().get(0)))) {
+                System.out.println("This is w/out toString: " + custDrink.getIngredients().get(0));
+                System.out.println("This is w/toString: " + custDrink.getIngredients().get(0).toString());
+                baristaIngre.add(currentRoom.getIngre1());
+                System.out.println("This is w/out toString: " + baristaIngre.get(0));
+                System.out.println("This is w/toString: " + baristaIngre.get(0));
+            }
+            if ((answer.equals("grab")) && (!baristaIngre.contains(custDrink.getIngredients().get(1)))) {
+                baristaIngre.add(currentRoom.getIngre2());
+            }
+            if ((answer.equals("grab")) && (!baristaIngre.contains(custDrink.getIngredients().get(2)))) {
+                baristaIngre.add(currentRoom.getIngre2());
+            }
+            if ((answer.equals("grab")) && (!baristaIngre.contains(custDrink.getIngredients().get(3)))) {
+                baristaIngre.add(currentRoom.getIngre3());
+            }
+            if ((answer.equals("grab")) && (!baristaIngre.contains(custDrink.getIngredients().get(4)))) {
+                baristaIngre.add(currentRoom.getIngre1());
+            }
+        }
 
 
 

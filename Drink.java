@@ -27,6 +27,8 @@ public void printIngredients() {
 public ArrayList<Ingredient>getIngredients(){
     return ingredients;
 }
+
+
 //Getter for the name
 public String getName(){
     return name;
