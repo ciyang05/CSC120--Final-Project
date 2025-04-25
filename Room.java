@@ -31,20 +31,6 @@ public class Room {
         this.roomName = rName;
     }
 
-
-    /**
-     * constructor for room w/2 ingredients 
-     * @param rName
-     * @param ingre
-     * @param ingre2
-     */
-    public Room(String rName, Ingredient ingre, Ingredient ingre2) {
-        this.roomName = rName;
-        this.ingre_1 = ingre;
-        this.ingre_2 = ingre2;
-    }
-
-
     /**
      * full constructor for room w/multiple ingredients 
      * @param rName

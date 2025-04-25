@@ -120,11 +120,32 @@ public class Barista extends Person {
                 System.out.println(currentRoom.toString());
                 System.out.println("Current room indicies" + currentRoom.getIndicies());
             } 
+
+
+            if ((currentRoom.getIndicies().equals("[0, 2]")) || (currentRoom.getIndicies().equals("[1, 2]")) || (currentRoom.getIndicies().equals("[2, 1]"))) {
+                System.out.println("The " + currentRoom.getName() + " has ingredients for a drink. Would you like to pick it up? If so, type 'grab'.");
+                answer = input.nextLine().toLowerCase();
+
+                if ((answer.equals("grab")) && (currentRoom.getIndicies().equals("[0, 2]"))) {
+                    Drink latte = Cafe.makeLatte();
+                    grabIngre(latte);
+                }
+
+                if ((answer.equals("grab")) && (currentRoom.getIndicies().equals("[1, 2]"))) {
+                    Drink americano = Cafe.makeAmericano();
+                    grabIngre(americano);
+                }
+                
+                if ((answer.equals("grab")) && (currentRoom.getIndicies().equals("[2, 1]"))) {
+                    Drink matcha = Cafe.makeMatcha();
+                    grabIngre(matcha);
+                }
+
             else {
                 System.out.println("invalid tempRow. did not move north");
             }
         }
-
+    }
 
         if (direction.equals("south")) {
             System.out.println("The indicies before moving are " + currentRoom.getIndicies());
@@ -140,10 +161,32 @@ public class Barista extends Person {
                 System.out.println(currentRoom.toString());
                 System.out.println("Current room indicies" + currentRoom.getIndicies());
             } 
+
+            if ((currentRoom.getIndicies().equals("[0, 2]")) || (currentRoom.getIndicies().equals("[1, 2]")) || (currentRoom.getIndicies().equals("[2, 1]"))) {
+                System.out.println("The " + currentRoom.getName() + " has ingredients for a drink. Would you like to pick it up? If so, type 'grab'.");
+                answer = input.nextLine().toLowerCase();
+
+                if ((answer.equals("grab")) && (currentRoom.getIndicies().equals("[0, 2]"))) {
+                    Drink latte = Cafe.makeLatte();
+                    grabIngre(latte);
+                }
+
+                if ((answer.equals("grab")) && (currentRoom.getIndicies().equals("[1, 2]"))) {
+                    Drink americano = Cafe.makeAmericano();
+                    grabIngre(americano);
+                }
+                
+                if ((answer.equals("grab")) && (currentRoom.getIndicies().equals("[2, 1]"))) {
+                    Drink matcha = Cafe.makeMatcha();
+                    grabIngre(matcha);
+                }
+
             else {
                 System.out.println("invalid tempRow. did not move south");
             }
         }
+
+    }
 
 
         if (direction.equals("west")) {
@@ -160,10 +203,32 @@ public class Barista extends Person {
                 System.out.println(currentRoom.toString());
                 System.out.println("Current room indicies" + currentRoom.getIndicies());
             } 
+
+            if ((currentRoom.getIndicies().equals("[0, 2]")) || (currentRoom.getIndicies().equals("[1, 2]")) || (currentRoom.getIndicies().equals("[2, 1]"))) {
+                System.out.println("The " + currentRoom.getName() + " has ingredients for a drink. Would you like to pick it up? If so, type 'grab'.");
+                answer = input.nextLine().toLowerCase();
+
+                if ((answer.equals("grab")) && (currentRoom.getIndicies().equals("[0, 2]"))) {
+                    Drink latte = Cafe.makeLatte();
+                    grabIngre(latte);
+                }
+
+                if ((answer.equals("grab")) && (currentRoom.getIndicies().equals("[1, 2]"))) {
+                    Drink americano = Cafe.makeAmericano();
+                    grabIngre(americano);
+                }
+                
+                if ((answer.equals("grab")) && (currentRoom.getIndicies().equals("[2, 1]"))) {
+                    Drink matcha = Cafe.makeMatcha();
+                    grabIngre(matcha);
+                }
+
             else {
                 System.out.println("invalid tempCol. did not move west");
             }
         }
+
+    }
 
         
         if (direction.equals("east")) {
@@ -182,47 +247,80 @@ public class Barista extends Person {
             } 
 
             if ((currentRoom.getIndicies().equals("[0, 2]")) || (currentRoom.getIndicies().equals("[1, 2]")) || (currentRoom.getIndicies().equals("[2, 1]"))) {
-                System.out.println("The " + currentRoom.getName() + " has ingredients for a drink. Would you like to pick it up?\n If so, type 'grab'.");
+                System.out.println("The " + currentRoom.getName() + " has ingredients for a drink. Would you like to pick it up? If so, type 'grab'.");
                 answer = input.nextLine().toLowerCase();
-                grabIngre(new Drink("latte"));
+
+                if ((answer.equals("grab")) && (currentRoom.getIndicies().equals("[0, 2]"))) {
+                    Drink latte = Cafe.makeLatte();
+                    grabIngre(latte);
+                }
+
+                if ((answer.equals("grab")) && (currentRoom.getIndicies().equals("[1, 2]"))) {
+                    Drink americano = Cafe.makeAmericano();
+                    grabIngre(americano);
+                }
+                
+                if ((answer.equals("grab")) && (currentRoom.getIndicies().equals("[2, 1]"))) {
+                    Drink matcha = Cafe.makeMatcha();
+                    grabIngre(matcha);
+                }
+            
             }
 
             else {
                 System.out.println("invalid tempCol. did not move east");
             }
-
         }
+                
     }
 
 
-    // not tested yet
     // Drink custDrink is a placeholder for the actual drink that will be passed in as a parameter when using this method
     public void grabIngre(Drink custDrink) {
-        // if ((currentRoom.getIndicies() == "[0, 2]") || (currentRoom.getIndicies() == "[1, 2]") || (currentRoom.getIndicies() == "[2, 1]")) {
-        //     System.out.println("The " + currentRoom.getName() + " has ingredients for a drink. Would you like to pick it up?\n If so, type 'grab'.");
-        //     String answer = input.nextLine().toLowerCase();
-
 
             // testing method
-            if ((answer.equals("grab")) && (!baristaIngre.contains(custDrink.getIngredients().get(0)))) {
-                System.out.println("This is w/out toString: " + custDrink.getIngredients().get(0));
-                System.out.println("This is w/toString: " + custDrink.getIngredients().get(0).toString());
+            System.out.println("These are the ingredients you will need to pick up " + custDrink.getIngredients()); // w/this method, the ingredients list is empty
+            if ((!baristaIngre.contains(custDrink.getIngredients().get(0)))) {
+                // System.out.println("This is w/out toString: " + custDrink.getIngredients().get(0));
+                // System.out.println("This is w/toString: " + custDrink.getIngredients().get(0).toString());
+                
                 baristaIngre.add(currentRoom.getIngre1());
-                System.out.println("This is w/out toString: " + baristaIngre.get(0));
-                System.out.println("This is w/toString: " + baristaIngre.get(0));
+                // System.out.println("This is w/out toString: " + baristaIngre.get(0));
+                // System.out.println("This is w/toString: " + baristaIngre.get(0).toString());
+                System.out.println(baristaIngre.toString());
             }
-            if ((answer.equals("grab")) && (!baristaIngre.contains(custDrink.getIngredients().get(1)))) {
+
+            if ((!baristaIngre.contains(custDrink.getIngredients().get(1)))) {
+                // System.out.println("This is w/out toString: " + custDrink.getIngredients().get(1));
+                // System.out.println("This is w/toString: " + custDrink.getIngredients().get(1).toString());
+                
                 baristaIngre.add(currentRoom.getIngre2());
+                // System.out.println("This is w/out toString: " + baristaIngre.get(1));
+                // System.out.println("This is w/toString: " + baristaIngre.get(1).toString());
+                System.out.println(baristaIngre.toString());
+
             }
-            if ((answer.equals("grab")) && (!baristaIngre.contains(custDrink.getIngredients().get(2)))) {
-                baristaIngre.add(currentRoom.getIngre2());
-            }
-            if ((answer.equals("grab")) && (!baristaIngre.contains(custDrink.getIngredients().get(3)))) {
+
+            if ((!baristaIngre.contains(custDrink.getIngredients().get(2)))) {
+                // System.out.println("This is w/out toString: " + custDrink.getIngredients().get(2));
+                // System.out.println("This is w/toString: " + custDrink.getIngredients().get(2).toString());
+
                 baristaIngre.add(currentRoom.getIngre3());
+                // System.out.println("This is w/out toString: " + baristaIngre.get(2));
+                // System.out.println("This is w/toString: " + baristaIngre.get(2).toString());
+                System.out.println(baristaIngre.toString());
             }
-            if ((answer.equals("grab")) && (!baristaIngre.contains(custDrink.getIngredients().get(4)))) {
-                baristaIngre.add(currentRoom.getIngre1());
+
+            if ((!baristaIngre.contains(custDrink.getIngredients().get(3)))) {
+                // System.out.println("This is w/out toString: " + custDrink.getIngredients().get(3));
+                // System.out.println("This is w/toString: " + custDrink.getIngredients().get(3).toString());
+
+                baristaIngre.add(currentRoom.getIngre4());
+                // System.out.println("This is w/out toString: " + baristaIngre.get(3));
+                // System.out.println("This is w/toString: " + baristaIngre.get(3).toString());
+                System.out.println(baristaIngre.toString());
             }
+
         }
 
 

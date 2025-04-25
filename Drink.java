@@ -23,6 +23,9 @@ public void printIngredients() {
 
 } 
 
+public String toString() {
+    return ingredients.toString();
+}
 
 public ArrayList<Ingredient>getIngredients(){
     return ingredients;

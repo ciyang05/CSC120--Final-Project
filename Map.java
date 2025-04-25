@@ -29,7 +29,7 @@ public class Map {
         arrayMap[1][1] = new Room("Willowhush Forest");
         arrayMap[1][1].setLocation(1,1);
 
-        arrayMap[1][2] = new Room("Brooknest Cavern", new Ingredient("Espresso", "shots", 3), new Ingredient("Water", "Cups", 0.25));
+        arrayMap[1][2] = new Room("Brooknest Cavern", new Ingredient("Espresso", "shots", 3), new Ingredient("Water", "Cups", 0.25), new Ingredient("Ice", "cubes", 15), new Ingredient("N/A", "N/A", 0));
         arrayMap[1][2].setLocation(1,2);
 
         arrayMap[2][0] = new Room("Stillmist Valley");

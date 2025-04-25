@@ -52,6 +52,8 @@ public class Cafe {
         Drink americano = new Drink("Americano");
         americano.addIngredient("Espresso", "shots", 3);
         americano.addIngredient("Water", "Cups", 0.25);
+        americano.addIngredient("Ice", "cubes", 15);
+        americano.addIngredient("N/A", "N/A", 0);
         return americano;
 
     }
