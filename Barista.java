@@ -44,7 +44,6 @@ public class Barista extends Person {
         return rowIndex;
     }
 
-
     /**
      * accessor for column index, which column barista is at
      * @return columnIndex
@@ -53,7 +52,6 @@ public class Barista extends Person {
         return colIndex;
     }
 
-
     /**
      * accesses boolean value of quitFlag
      * @return quitFlag
@@ -61,7 +59,6 @@ public class Barista extends Person {
     public boolean getQuit() {
         return quitFlag;
     }
-
 
     /**
      * accesses the map
@@ -79,20 +76,31 @@ public class Barista extends Person {
         return currentRoom;
     }
 
-
-    // public String getAnswer() {
-    //     return answer;
-    // }
-
-
-    // public Drink talk() {
-    //     if ()
-    // } 
+    /**
+     * accesses the player's current answer
+     * @return answer
+     */
+    public String getAnswer() {
+        return answer;
+    }
 
 
+    // have to see what manager location looks like
+    public Drink talk() {
+        if ()
+    } 
+
+
+    // will allow barista to make the drink and finish game
+    public Drink makeDrink(baristaIngre) {
+
+    }
     
 
-    // fully works right now!
+    // fully works now!
+    /**
+     * allows player (barista) to move
+     */
     public void move() {
         
         System.out.println("Where would you like to go? Your options are north, east, south, or west.");
@@ -275,7 +283,12 @@ public class Barista extends Person {
     }
 
 
+    // works
     // Drink custDrink is a placeholder for the actual drink that will be passed in as a parameter when using this method
+    /**
+     * allows player (barista) to grab ingredients 
+     * @param custDrink
+     */
     public void grabIngre(Drink custDrink) {
 
             // testing method
@@ -318,13 +331,31 @@ public class Barista extends Person {
                 baristaIngre.add(currentRoom.getIngre4());
                 // System.out.println("This is w/out toString: " + baristaIngre.get(3));
                 // System.out.println("This is w/toString: " + baristaIngre.get(3).toString());
-                System.out.println(baristaIngre.toString());
+                System.out.println("Updated inventory: " + baristaIngre.toString());
             }
 
         }
 
 
+    // works, just not sure when to implement. possibly in game loop?
+    /**
+     * allows player (barista) to drop ingredients
+     * @param custDrink
+     */
+    public void dropIngre(Drink custDrink) {
+        System.out.println("If you would like to drop your ingredients, type 'drop'.");
+        answer = input.nextLine().toLowerCase();
+        System.out.println("This is your current inventory: " + baristaIngre.toString());
 
+        if ((answer.equals("drop")) && (!baristaIngre.isEmpty())) {
+            baristaIngre.removeIf(n -> true); // removes ingredients according to parameter
+            System.out.println("You have dropped all of your ingredients!");
+            System.out.println("Updated inventory: " + baristaIngre.toString());
+        } else {
+            System.out.println("Guess you don't want to drop your ingredients!");
+        }
+
+    }
 
 
 
