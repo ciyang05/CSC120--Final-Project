@@ -21,6 +21,8 @@ public class Barista extends Person {
 
     // will hold ingredients that barista grabs
     private ArrayList<Ingredient> baristaIngre;
+
+    private Drink myDrink;
    
 
 
@@ -85,17 +87,58 @@ public class Barista extends Person {
     }
 
 
+    // NOT TESTED
     // have to see what manager location looks like
-    public Drink talk() {
-        if ()
-    } 
+    // not done yet, will have to talk to Victoria to verify and test code
+    // public void talk() {
+    //     if ((currentRoom.getIndicies().equals("[1, 1]")) || (currentRoom.getIndicies().equals("[2, 2]"))) {
+    //         System.out.println("You come across Oak & Ember Cafe's notorious manager, Berta.");
+
+    //         Manager Berta = new Manager("Berta");
+    //         Drink latte = new Drink("latte");
+    //         Berta.talk(latte);
 
 
+    //     }
+    // } 
+
+
+    // NOT TESTED YET
     // will allow barista to make the drink and finish game
-    public Drink makeDrink(baristaIngre) {
+    public void makeDrink(Drink drink) {
+        if ((baristaIngre.contains(drink.getIngredients().get(0))) && (baristaIngre.contains(drink.getIngredients().get(1))) && (baristaIngre.contains(drink.getIngredients().get(2))) && (baristaIngre.contains(drink.getIngredients().get(3)))) {
+            System.out.println("Congrats! You have collected the correct ingredients for a " + drink.getName() + ". To make the drink, type 'make.'");
+            answer = input.nextLine().toLowerCase();
+            
+            if (answer.equals("make")) {
+                System.out.println("One " + drink.getName() + " coming right up!");
+                
+                if (drink.getName().equals("latte")) {
+                    myDrink = Cafe.makeLatte();
+                }
+                if (drink.getName().equals("matcha")) {
+                    myDrink = Cafe.makeMatcha();
+                }
+                if (drink.getName().equals("americano")) {
+                    myDrink = Cafe.makeAmericano();
+                }
 
+                System.out.println("Drink created. \n To hand the drink to the customer, type 'hand.'");
+                answer = input.nextLine().toLowerCase();
+                if (answer.equals("hand")) {
+                    handDrink(myDrink);
+                }
+            } else {
+                System.out.println("You did not type 'make.' Try again.");
+            }
+        }
     }
     
+
+    public void handDrink(Drink drink) {
+        System.out.println("Here is your " + drink.getName() + "! Enjoy!");
+    }
+
 
     // fully works now!
     /**
@@ -127,7 +170,9 @@ public class Barista extends Person {
                 currentRoom = myMap.getArray_Map()[rowIndex][colIndex];
                 System.out.println(currentRoom.toString());
                 System.out.println("Current room indicies" + currentRoom.getIndicies());
-            } 
+            } else {
+                System.out.println("invalid tempRow. did not move north");
+            }
 
 
             if ((currentRoom.getIndicies().equals("[0, 2]")) || (currentRoom.getIndicies().equals("[1, 2]")) || (currentRoom.getIndicies().equals("[2, 1]"))) {
@@ -137,21 +182,21 @@ public class Barista extends Person {
                 if ((answer.equals("grab")) && (currentRoom.getIndicies().equals("[0, 2]"))) {
                     Drink latte = Cafe.makeLatte();
                     grabIngre(latte);
+                    makeDrink(latte);
                 }
 
                 if ((answer.equals("grab")) && (currentRoom.getIndicies().equals("[1, 2]"))) {
                     Drink americano = Cafe.makeAmericano();
                     grabIngre(americano);
+                    makeDrink(americano);
                 }
                 
                 if ((answer.equals("grab")) && (currentRoom.getIndicies().equals("[2, 1]"))) {
                     Drink matcha = Cafe.makeMatcha();
                     grabIngre(matcha);
+                    makeDrink(matcha);
                 }
 
-            else {
-                System.out.println("invalid tempRow. did not move north");
-            }
         }
     }
 
@@ -168,7 +213,9 @@ public class Barista extends Person {
                 currentRoom = myMap.getArray_Map()[rowIndex][colIndex];
                 System.out.println(currentRoom.toString());
                 System.out.println("Current room indicies" + currentRoom.getIndicies());
-            } 
+            } else {
+                System.out.println("invalid tempRow. did not move south");
+            }
 
             if ((currentRoom.getIndicies().equals("[0, 2]")) || (currentRoom.getIndicies().equals("[1, 2]")) || (currentRoom.getIndicies().equals("[2, 1]"))) {
                 System.out.println("The " + currentRoom.getName() + " has ingredients for a drink. Would you like to pick it up? If so, type 'grab'.");
@@ -177,21 +224,20 @@ public class Barista extends Person {
                 if ((answer.equals("grab")) && (currentRoom.getIndicies().equals("[0, 2]"))) {
                     Drink latte = Cafe.makeLatte();
                     grabIngre(latte);
+                    makeDrink(latte);
                 }
 
                 if ((answer.equals("grab")) && (currentRoom.getIndicies().equals("[1, 2]"))) {
                     Drink americano = Cafe.makeAmericano();
                     grabIngre(americano);
+                    makeDrink(americano);
                 }
                 
                 if ((answer.equals("grab")) && (currentRoom.getIndicies().equals("[2, 1]"))) {
                     Drink matcha = Cafe.makeMatcha();
                     grabIngre(matcha);
+                    makeDrink(matcha);
                 }
-
-            else {
-                System.out.println("invalid tempRow. did not move south");
-            }
         }
 
     }
@@ -210,7 +256,9 @@ public class Barista extends Person {
                 currentRoom = myMap.getArray_Map()[rowIndex][colIndex];
                 System.out.println(currentRoom.toString());
                 System.out.println("Current room indicies" + currentRoom.getIndicies());
-            } 
+            } else {
+                System.out.println("invalid tempRow. did not move south");
+            }
 
             if ((currentRoom.getIndicies().equals("[0, 2]")) || (currentRoom.getIndicies().equals("[1, 2]")) || (currentRoom.getIndicies().equals("[2, 1]"))) {
                 System.out.println("The " + currentRoom.getName() + " has ingredients for a drink. Would you like to pick it up? If so, type 'grab'.");
@@ -219,21 +267,21 @@ public class Barista extends Person {
                 if ((answer.equals("grab")) && (currentRoom.getIndicies().equals("[0, 2]"))) {
                     Drink latte = Cafe.makeLatte();
                     grabIngre(latte);
+                    makeDrink(latte);
                 }
 
                 if ((answer.equals("grab")) && (currentRoom.getIndicies().equals("[1, 2]"))) {
                     Drink americano = Cafe.makeAmericano();
                     grabIngre(americano);
+                    makeDrink(americano);
                 }
                 
                 if ((answer.equals("grab")) && (currentRoom.getIndicies().equals("[2, 1]"))) {
                     Drink matcha = Cafe.makeMatcha();
                     grabIngre(matcha);
+                    makeDrink(matcha);
                 }
 
-            else {
-                System.out.println("invalid tempCol. did not move west");
-            }
         }
 
     }
@@ -252,7 +300,9 @@ public class Barista extends Person {
                 currentRoom = myMap.getArray_Map()[rowIndex][colIndex];
                 System.out.println(currentRoom.toString());
                 System.out.println("Current room indicies" + currentRoom.getIndicies());
-            } 
+            } else {
+                System.out.println("invalid tempCol. did not move east");
+            }
 
             if ((currentRoom.getIndicies().equals("[0, 2]")) || (currentRoom.getIndicies().equals("[1, 2]")) || (currentRoom.getIndicies().equals("[2, 1]"))) {
                 System.out.println("The " + currentRoom.getName() + " has ingredients for a drink. Would you like to pick it up? If so, type 'grab'.");
@@ -261,23 +311,23 @@ public class Barista extends Person {
                 if ((answer.equals("grab")) && (currentRoom.getIndicies().equals("[0, 2]"))) {
                     Drink latte = Cafe.makeLatte();
                     grabIngre(latte);
+                    makeDrink(latte);
                 }
 
                 if ((answer.equals("grab")) && (currentRoom.getIndicies().equals("[1, 2]"))) {
                     Drink americano = Cafe.makeAmericano();
                     grabIngre(americano);
+                    makeDrink(americano);
                 }
                 
                 if ((answer.equals("grab")) && (currentRoom.getIndicies().equals("[2, 1]"))) {
                     Drink matcha = Cafe.makeMatcha();
                     grabIngre(matcha);
+                    makeDrink(matcha);
                 }
             
             }
 
-            else {
-                System.out.println("invalid tempCol. did not move east");
-            }
         }
                 
     }
@@ -300,7 +350,7 @@ public class Barista extends Person {
                 baristaIngre.add(currentRoom.getIngre1());
                 // System.out.println("This is w/out toString: " + baristaIngre.get(0));
                 // System.out.println("This is w/toString: " + baristaIngre.get(0).toString());
-                System.out.println(baristaIngre.toString());
+                // System.out.println(baristaIngre.toString());
             }
 
             if ((!baristaIngre.contains(custDrink.getIngredients().get(1)))) {
@@ -310,7 +360,7 @@ public class Barista extends Person {
                 baristaIngre.add(currentRoom.getIngre2());
                 // System.out.println("This is w/out toString: " + baristaIngre.get(1));
                 // System.out.println("This is w/toString: " + baristaIngre.get(1).toString());
-                System.out.println(baristaIngre.toString());
+                // System.out.println(baristaIngre.toString());
 
             }
 
@@ -321,7 +371,7 @@ public class Barista extends Person {
                 baristaIngre.add(currentRoom.getIngre3());
                 // System.out.println("This is w/out toString: " + baristaIngre.get(2));
                 // System.out.println("This is w/toString: " + baristaIngre.get(2).toString());
-                System.out.println(baristaIngre.toString());
+                // System.out.println(baristaIngre.toString());
             }
 
             if ((!baristaIngre.contains(custDrink.getIngredients().get(3)))) {

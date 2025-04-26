@@ -1,24 +1,48 @@
 import java.util.Scanner;
+import java.util.Arrays;
 
 
 public class Manager extends Person{
     //Attributes
     protected String Berta; //name
     public static Scanner input = new Scanner(System.in); //scanner
-    private int x, y; //location coordinates
     private String question = "what is"; //question
     private String correctAnswer = "night"; //answer
     private String managerLocation; //getting all the locations (might need to change)
+
+    private int[] location_1 = new int[2]; // location 1 coordinates
+    private int [] location_2 = new int [2]; // location 2 coordinates
+
 
 
     //Constructor that also gives Berta her positions
     public Manager (String Berta, String managerLocation) {
         super(Berta);
-        // this.x = x;
-        // this.y = y;
         this.managerLocation = managerLocation;
+        this.location_1[0] = 1;
+        this.location_1[1] = 1; // Willowhush Forest
+        this.location_2[0] = 2;
+        this.location_2[1] = 2; // Brooknest Cavern
     }
 
+
+    public Manager (String Berta) {
+        super(Berta);
+        // this.managerLocation = managerLocation;
+        this.location_1[0] = 1;
+        this.location_1[1] = 1; // Willowhush Forest
+        this.location_2[0] = 2;
+        this.location_2[1] = 2; // Brooknest Cavern
+    }
+
+
+    public String getLocation_1() {
+        return Arrays.toString(location_1);
+    }
+
+    public String getLocation_2() {
+        return Arrays.toString(location_2);
+    }
 
     //Checking if the barista is at the same location as manager
     public boolean sameLocation(Barista barista){
@@ -30,12 +54,12 @@ public class Manager extends Person{
         }
     }
 
-    //Talk method 
+    // Talk method 
     public void talk(Barista barista, Drink drink){
         if (sameLocation(barista)){ //if the barista's location is the same as the manager
 
-            System.out.println("Manager: I'm Berta, your manager. Answer this trivia question right adn you wil get a hint for your" + drink.getName());//print greeting
-            System.out.println("Manger: " + question);//print question
+            System.out.println("Manager: I'm Berta, your manager. Answer this trivia question right and you wil get a hint to find the ingredients for your" + drink.getName());//print greeting
+            System.out.println("Manager: " + question);//print question
 
             String response = input.nextLine();//user inputs answer to question
 

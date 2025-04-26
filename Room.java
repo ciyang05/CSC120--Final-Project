@@ -17,10 +17,10 @@ public class Room {
      * @param rName
      * @param anyPerson
      */
-    // public Room(String rName, Person anyPerson) {
-    //     this.roomName = rName;
-    //     this.aPerson = anyPerson;
-    // }
+    public Room(String rName, Person anyPerson) {
+        this.roomName = rName;
+        this.aPerson = anyPerson;
+    }
 
 
     /**
@@ -85,17 +85,29 @@ public class Room {
     // }
 
 
+    /**
+     * converts roomName to a String
+     * @return roomName
+     */
     public String toString() {
         return "You are now at " + this.roomName;
     }
 
-
+    /**
+     * gets room indicies and stores in location array 
+     * @param row
+     * @param col
+     */
     public void setLocation(int row, int col) {
         this.location[0] = row;
         this.location[1] = col;
     }
     
 
+    /**
+     * converts room indicies into string  
+     * @return String location
+     */
     public String getIndicies() {
         return Arrays.toString(location);
     }

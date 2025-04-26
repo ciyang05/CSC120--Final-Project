@@ -26,7 +26,7 @@ public class Map {
         arrayMap[1][0] = new Room("Stillmist Valley");
         arrayMap[1][0].setLocation(1,0);
 
-        arrayMap[1][1] = new Room("Willowhush Forest");
+        arrayMap[1][1] = new Room("Willowhush Forest", new Person("Berta"));
         arrayMap[1][1].setLocation(1,1);
 
         arrayMap[1][2] = new Room("Brooknest Cavern", new Ingredient("Espresso", "shots", 3), new Ingredient("Water", "Cups", 0.25), new Ingredient("Ice", "cubes", 15), new Ingredient("N/A", "N/A", 0));
@@ -38,7 +38,7 @@ public class Map {
         arrayMap[2][1] = new Room("Moonrest Cove", new Ingredient("Vanilla Syrup", "pumps", 2), new Ingredient("Normal Sugar", "teaspoons", 10), new Ingredient("Oat Milk", "Cups", 0.5), new Ingredient("Matcha Powder", "teaspoons", 3));
         arrayMap[2][1].setLocation(2,1);
 
-        arrayMap[2][2] = new Room("Brooknest Cavern");
+        arrayMap[2][2] = new Room("Brooknest Cavern", new Person("Berta"));
         arrayMap[2][2].setLocation(2,2);
 
     }
