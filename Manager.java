@@ -10,6 +10,7 @@ public class Manager extends Person{
     private String correctAnswer = "night"; //answer
     // private List<String> mLocations; //getting all the locations (might need to change)
     private Room[][] arrayMap; // setting location for manager
+    
      
 
     //Constructor that also gives Berta her positions
@@ -25,7 +26,7 @@ public class Manager extends Person{
     }
 
     public Room getLocation(Barista barista){
-        return getLocation;
+        return location;
 
     }
 
