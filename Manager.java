@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 public class Manager extends Person{
     //Attributes
-    protected String Berta; //name
+    protected static String Berta; //name
     public static Scanner input = new Scanner(System.in); //scanner
     private String question = "When the sun climbs high and thirst grips the realm, what sacred liquid do mortals most often crave to cool their flame—brewed from beans, dark as night?"; //question
     private String correctAnswer = "Cold brew"; //answer

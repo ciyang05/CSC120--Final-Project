@@ -23,6 +23,8 @@ public class Barista extends Person {
     private static ArrayList<Ingredient> baristaIngre;
 
     private Drink myDrink;
+
+    private Drink custDrink = new Drink("Matcha");
    
 
 
@@ -94,21 +96,18 @@ public class Barista extends Person {
     // NOT TESTED
     // have to see what manager location looks like
     // not done yet, will have to talk to Victoria to verify and test code
-    // public void talk() {
-    //     if ((currentRoom.getIndicies().equals("[1, 1]")) || (currentRoom.getIndicies().equals("[2, 2]"))) {
-    //         System.out.println("You come across Oak & Ember Cafe's notorious manager, Berta.");
-
-    //         Manager Berta = new Manager("Berta");
-    //         Drink latte = new Drink("latte");
-    //         Berta.talk(latte);
+    public void talk(Manager Berta) {
+        System.out.println("You come across Oak & Ember Cafe's notorious manager, Berta.");
+            
+        Berta.talk(this, custDrink);
+    } 
 
 
-    //     }
-    // } 
-
-
-    // NOT TESTED YET
-    // will allow barista to make the drink and finish game
+    // Works!
+    /**
+     * makes the drink that customer ordered
+     * @param drink
+     */
     public void makeDrink(Drink drink) {
         if ((baristaIngre.toString().equals(drink.getIngredients().toString()))) {
             System.out.println("Congrats! You have collected the correct ingredients for a " + drink.getName() + ". To make the drink, type 'make.'");
@@ -117,22 +116,35 @@ public class Barista extends Person {
             if (answer.equals("make")) {
                 System.out.println("One " + drink.getName() + " coming right up!");
                 
-                if (drink.getName().equals("latte")) {
+                if (drink.getName().equals("Latte")) {
+                    System.out.println("Making latte...");
                     myDrink = Cafe.makeLatte();
-                    System.out.println(myDrink.getName());
+                    System.out.println(myDrink.getName() + " created. To hand the drink to the customer, type 'hand.'");
+                    answer = input.nextLine().toLowerCase();
+                    if (answer.equals("hand")) {
+                        handDrink(myDrink);
+                    }
                 }
-                if (drink.getName().equals("matcha")) {
+                if (drink.getName().equals("Matcha")) {
+                    System.out.println("Making matcha...");
                     myDrink = Cafe.makeMatcha();
+                    System.out.println(myDrink.getName() + " created. To hand the drink to the customer, type 'hand.'");
+                    answer = input.nextLine().toLowerCase();
+                    if (answer.equals("hand")) {
+                        handDrink(myDrink);
+                    }
+                    
                 }
-                if (drink.getName().equals("americano")) {
+                if (drink.getName().equals("Americano")) {
+                    System.out.println("Making americano...");
                     myDrink = Cafe.makeAmericano();
+                    System.out.println(myDrink.getName() + " created. To hand the drink to the customer, type 'hand.'");
+                    answer = input.nextLine().toLowerCase();
+                    if (answer.equals("hand")) {
+                        handDrink(myDrink);
+                    }
                 }
 
-                System.out.println("Drink created. \n To hand the drink to the customer, type 'hand.'");
-                answer = input.nextLine().toLowerCase();
-                if (answer.equals("hand")) {
-                    handDrink(myDrink);
-                }
             } else {
                 System.out.println("You did not type 'make.' Try again.");
             }
@@ -140,8 +152,13 @@ public class Barista extends Person {
     }
     
 
+    // works!
+    /**
+     * "hand" drink to customer
+     * @param drink
+     */
     public void handDrink(Drink drink) {
-        System.out.println("Here is your " + drink.getName() + "! Enjoy!");
+        System.out.println("Barista: Here is your " + drink.getName() + "! Enjoy!");
     }
 
 
@@ -203,6 +220,12 @@ public class Barista extends Person {
                 }
 
         }
+        if ((currentRoom.getIndicies().equals("[1, 1]"))) {
+            talk(new Manager("Berta", myMap, 1, 1));
+        } else if ((currentRoom.getIndicies().equals("[2, 2]"))) {
+            talk(new Manager("Berta", myMap, 2, 2));
+        }
+        
     }
 
         if (direction.equals("south")) {
@@ -243,6 +266,12 @@ public class Barista extends Person {
                     grabIngre(matcha);
                     makeDrink(matcha);
                 }
+        }
+
+        if ((currentRoom.getIndicies().equals("[1, 1]"))) {
+            talk(new Manager("Berta", myMap, 1, 1));
+        } else if ((currentRoom.getIndicies().equals("[2, 2]"))) {
+            talk(new Manager("Berta", myMap, 2, 2));
         }
 
     }
@@ -289,6 +318,12 @@ public class Barista extends Person {
 
         }
 
+        if ((currentRoom.getIndicies().equals("[1, 1]"))) {
+            talk(new Manager("Berta", myMap, 1, 1));
+        } else if ((currentRoom.getIndicies().equals("[2, 2]"))) {
+            talk(new Manager("Berta", myMap, 2, 2));
+        }
+
     }
 
         
@@ -326,11 +361,17 @@ public class Barista extends Person {
                 }
                 
                 if ((answer.equals("grab")) && (currentRoom.getIndicies().equals("[2, 1]"))) {
-                    Drink matcha = Cafe.makeMatcha();
-                    grabIngre(matcha);
-                    makeDrink(matcha);
+                    myDrink = Cafe.makeMatcha();
+                    grabIngre(myDrink);
+                    makeDrink(myDrink);
                 }
             
+            }
+
+            if ((currentRoom.getIndicies().equals("[1, 1]"))) {
+                talk(new Manager("Berta", myMap, 1, 1));
+            } else if ((currentRoom.getIndicies().equals("[2, 2]"))) {
+                talk(new Manager("Berta", myMap, 2, 2));
             }
 
         }
