@@ -20,6 +20,14 @@ public class Cafe {
         Customer computer = new Customer("Computer");
         computer.orderDrink(myDrink);
 
+        Barista barista = new Barista("Kiara");
+
+        while (!Barista.getBaristaIngre().equals(myDrink.getIngredients())){
+            System.out.println("Barista is still working");
+            
+        
+        }
+
         
     }
 
