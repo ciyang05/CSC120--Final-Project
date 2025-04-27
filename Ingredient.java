@@ -29,7 +29,7 @@ public class Ingredient {
     // right now used for debugging
     @Override
     public String toString() {
-        return name;
+        return amount + " " + units + " " + "of" + " " + name ;
     }
     
     public static void main(String[] args) {
