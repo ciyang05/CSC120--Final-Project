@@ -20,7 +20,7 @@ public class Barista extends Person {
     private String answer;
 
     // will hold ingredients that barista grabs
-    private ArrayList<Ingredient> baristaIngre;
+    private static ArrayList<Ingredient> baristaIngre;
 
     private Drink myDrink;
    
@@ -34,7 +34,7 @@ public class Barista extends Person {
         super(name);
         this.myMap = new Map();
         this.currentRoom = myMap.getArray_Map()[0][0];
-        this.baristaIngre = new ArrayList<>();
+        Barista.baristaIngre = new ArrayList<>();
     }
 
 
@@ -86,7 +86,7 @@ public class Barista extends Person {
         return answer;
     }
 
-    public ArrayList <Ingredient> getBaristaIngre() {
+    public static ArrayList <Ingredient> getBaristaIngre() {
         return baristaIngre;
     }
 
@@ -119,6 +119,7 @@ public class Barista extends Person {
                 
                 if (drink.getName().equals("latte")) {
                     myDrink = Cafe.makeLatte();
+                    System.out.println(myDrink.getName());
                 }
                 if (drink.getName().equals("matcha")) {
                     myDrink = Cafe.makeMatcha();
