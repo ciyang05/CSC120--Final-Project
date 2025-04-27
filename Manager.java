@@ -1,39 +1,29 @@
 import java.util.Scanner;
-import java.util.Arrays;
+// import java.nio.file.ReadOnlyFileSystemException;
+// import java.util.Arrays;
 
 
 public class Manager extends Person{
     //Attributes
     protected String Berta; //name
     public static Scanner input = new Scanner(System.in); //scanner
-    private String question = "what is"; //question
-    private String correctAnswer = "night"; //answer
-    // private List<String> mLocations; //getting all the locations (might need to change)
-    private Room[][] arrayMap; // setting location for manager
-    
-     
+    private String question = "When the sun climbs high and thirst grips the realm, what sacred liquid do mortals most often crave to cool their flame—brewed from beans, dark as night?"; //question
+    private String correctAnswer = "Cold brew"; //answer
+    private Room managerLocation; //getting all the locations (might need to change)
+
 
     //Constructor that also gives Berta her positions
-    public Manager (String Berta) {
+    public Manager (String Berta, Room managerLocation) {
         super(Berta);
         // this.x = x;
         // this.y = y;
-        // this.mLocations = mLocations;
-        this.arrayMap = new Room[3][3];
-        arrayMap[0][2] = new Room("Willowhush Forest", "You are in the Willowhush Forest.", new Person("Berta"));
-        arrayMap[2][0] = new Room("Stillmist Valley", "You are now in the Stillmist Valley", new Person("Berta"));
-
-    }
-
-    public Room getLocation(Barista barista){
-        return location;
-
+        this.managerLocation = managerLocation;
     }
 
 
     //Checking if the barista is at the same location as manager
     public boolean sameLocation(Barista barista){
-        if (barista.cRoom().equals(arrayMap)){ //if the locations are the same
+        if (barista.getCurrentRoom().equals(managerLocation)){ //if the locations are the same
             return true; //return true
         }
         else{ //if the locations are not the same
@@ -41,12 +31,12 @@ public class Manager extends Person{
         }
     }
 
-    //Talk method 
+    // Talk method 
     public void talk(Barista barista, Drink drink){
         if (sameLocation(barista)){ //if the barista's location is the same as the manager
 
-            System.out.println("Manager: I'm Berta, your manager. Answer this trivia question right adn you wil get a hint for your" + drink.getName());//print greeting
-            System.out.println("Manger: " + question);//print question
+            System.out.println("Manager: I'm Berta, your manager. Answer this trivia question right and you wil get a hint to find the ingredients for your" + drink.getName());//print greeting
+            System.out.println("Manager: " + question);//print question
 
             String response = input.nextLine();//user inputs answer to question
 
@@ -77,6 +67,8 @@ public class Manager extends Person{
             return;
         }
     }
+
+
 
     // public static void main(String[] args) {
     //     List<String> mLocations = Arrays.asList("Forest, Pond");
