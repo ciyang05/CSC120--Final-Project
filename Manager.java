@@ -13,11 +13,15 @@ public class Manager extends Person{
 
 
     //Constructor that also gives Berta her positions
-    public Manager (String Berta, Room managerLocation) {
+    public Manager (String Berta, Map map, int row, int col) {
         super(Berta);
         // this.x = x;
         // this.y = y;
-        this.managerLocation = managerLocation;
+        this.managerLocation = map.getArray_Map()[row][col];
+    }
+
+    public Room getManagerLocation(){
+        return managerLocation;
     }
 
 
