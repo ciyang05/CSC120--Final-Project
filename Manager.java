@@ -10,6 +10,7 @@ public class Manager extends Person{
     private String question = "When the sun climbs high and thirst grips the realm, what sacred liquid do mortals most often crave to cool their flame—brewed from beans, dark as night?"; //question
     private String correctAnswer = "Cold brew"; //answer
     private Room managerLocation; //getting all the locations (might need to change)
+    private Map map;
 
 
     //Constructor that also gives Berta her positions
@@ -20,19 +21,20 @@ public class Manager extends Person{
         this.managerLocation = map.getArray_Map()[row][col];
     }
 
+    //getter for the manager's location
     public Room getManagerLocation(){
         return managerLocation;
+    }
+
+    //setter for the manager's location
+    public void setManagerLocation(int row, int col){
+        this.managerLocation = map.getArray_Map()[row][col];
     }
 
 
     //Checking if the barista is at the same location as manager
     public boolean sameLocation(Barista barista){
-        if (barista.getCurrentRoom().equals(managerLocation)){ //if the locations are the same
-            return true; //return true
-        }
-        else{ //if the locations are not the same
-            return false; //return false
-        }
+        return barista.getCurrentRoom().equals(managerLocation); //if the locations are the same, returns boolean
     }
 
     // Talk method 
@@ -59,13 +61,13 @@ public class Manager extends Person{
     //Gives hint according to the drink
     public void giveHint(Drink drink){
         if(drink.getName().equals("Latte")){ //if the drink chosen is the same as matcha
-            System.out.println("The ingredients for " + drink.getName() + " are in the "); //give hint
+            System.out.println("To find the ingredients for " + drink.getName() + ", go in the directions that star with 'N' and 'E'"); //give hint
         }
         else if(drink.getName().equals("Matcha")){
-            System.out.println("The ingredients for " + drink.getName() + " are in the ");
+            System.out.println("To find the ingredients for " + drink.getName() + ", go in the direction that starts with 'S'");
         }
         else if (drink.getName().equals("Americano")){
-            System.out.println("The ingredients for " + drink.getName() + " are in the "); //add drinks as needed, not finished yet
+            System.out.println("To find the ingredients for " + drink.getName() + ", go in the direction that starts with 'E'"); //add drinks as needed, not finished yet
         }
         else{
             return;
