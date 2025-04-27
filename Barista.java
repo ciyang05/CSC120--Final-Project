@@ -86,6 +86,10 @@ public class Barista extends Person {
         return answer;
     }
 
+    public ArrayList <Ingredient> getBaristaIngre() {
+        return baristaIngre;
+    }
+
 
     // NOT TESTED
     // have to see what manager location looks like
@@ -106,7 +110,7 @@ public class Barista extends Person {
     // NOT TESTED YET
     // will allow barista to make the drink and finish game
     public void makeDrink(Drink drink) {
-        if ((baristaIngre.contains(drink.getIngredients().get(0))) && (baristaIngre.contains(drink.getIngredients().get(1))) && (baristaIngre.contains(drink.getIngredients().get(2))) && (baristaIngre.contains(drink.getIngredients().get(3)))) {
+        if ((baristaIngre.toString().equals(drink.getIngredients().toString()))) {
             System.out.println("Congrats! You have collected the correct ingredients for a " + drink.getName() + ". To make the drink, type 'make.'");
             answer = input.nextLine().toLowerCase();
             
