@@ -2,6 +2,7 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class Cafe {
+
     public static void main(String[] args) {
         ArrayList<Drink> drinks = new ArrayList<>();
         // Latte Drink
@@ -52,6 +53,8 @@ public class Cafe {
         Drink americano = new Drink("Americano");
         americano.addIngredient("Espresso", "shots", 3);
         americano.addIngredient("Water", "Cups", 0.25);
+        americano.addIngredient("Ice", "cubes", 15);
+        americano.addIngredient("N/A", "N/A", 0);
         return americano;
 
     }

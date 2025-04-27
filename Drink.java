@@ -23,10 +23,15 @@ public void printIngredients() {
 
 } 
 
+public String toString() {
+    return ingredients.toString();
+}
 
 public ArrayList<Ingredient>getIngredients(){
     return ingredients;
 }
+
+
 //Getter for the name
 public String getName(){
     return name;

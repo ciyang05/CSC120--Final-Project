@@ -1,8 +1,8 @@
 public class Ingredient {
     //Attributes 
-    String name;
-    String units;
-    double amount;
+    private String name;
+    private String units;
+    private double amount;
     
     public Ingredient(String name, String units, double amount){
         this.name = name;
@@ -12,10 +12,29 @@ public class Ingredient {
     }
 
 
+    public String getName() {
+        return name;
+    }
+
+    public String getUnits() {
+        return units;
+    }
+
+    public double getAmt() {
+        return amount;
+    }
+
+
+
     // right now used for debugging
     @Override
     public String toString() {
-        return  amount +" " + units + " " + name;
+        return name;
     }
     
+    public static void main(String[] args) {
+        Ingredient myMatcha = new Ingredient("Matcha Powder", "teaspoons", 3);
+        System.out.println(myMatcha);
+    }
+
 }
