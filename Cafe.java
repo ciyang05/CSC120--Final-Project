@@ -20,13 +20,21 @@ public class Cafe {
         Customer computer = new Customer("Computer");
         computer.orderDrink(myDrink);
 
-        Barista barista = new Barista("Kiara");
 
-        while (!Barista.getBaristaIngre().equals(myDrink.getIngredients())){
-            System.out.println("Barista is still working");
-            
+        Barista myBarista = new Barista("Kiara");
+
+        while (!myBarista.getBaristaIngre().containsAll(myDrink.getIngredients())){
+            myBarista.move(myDrink);
+             
+            //System.out.println("Barista is still working");
+            if (myBarista.getQuit()){
+                //System.out.println("You decided to quit");
+                break;
+            }
         
         }
+        System.out.println("You completed the game!");
+
 
         
     }

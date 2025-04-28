@@ -24,7 +24,7 @@ public class Barista extends Person {
 
     private Drink myDrink;
 
-    private Drink custDrink = new Drink("Matcha");
+    private static Drink custDrink;
    
 
 
@@ -171,7 +171,7 @@ public class Barista extends Person {
     /**
      * allows player (barista) to move
      */
-    public void move() {
+    public void move(Drink custDrink) {
         
         System.out.println("Where would you like to go? Your options are north, east, south, or west.");
         System.out.println("If you would like to quit the game, type 'quit'.");
@@ -491,7 +491,7 @@ public class Barista extends Person {
 
             // while it is false, once it is true = breaks loop
             while (!myBarista.getQuit()) {
-                myBarista.move();
+                myBarista.move(custDrink);
             }
         } else {
             System.out.println("Try answering again. Please enter 'go' or 'Go'");

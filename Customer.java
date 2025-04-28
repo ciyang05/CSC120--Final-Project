@@ -8,6 +8,7 @@ public class Customer {
     }
 
     public void orderDrink(Drink customerDrink) {
+        System.out.println("You need to create a");
         System.out.println(customerDrink.getName());
         customerDrink.printIngredients();
 
