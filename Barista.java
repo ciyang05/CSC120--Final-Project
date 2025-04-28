@@ -24,7 +24,7 @@ public class Barista extends Person {
 
     private Drink myDrink; // drink that is created in makeDrink method
 
-    private static Drink custDrink = Cafe.makeLatte(); // drink that customer chooses, will be a randomized drink
+    private static Drink custDrink; // drink that customer chooses, will be a randomized drink
 
     // private Manager Berta_1 = new Manager("Berta", myMap, 1, 1); // manager at location [1, 1]
     // private Manager Berta_2 = new Manager("Berta", myMap, 2, 2); // manager at location [2, 2]
