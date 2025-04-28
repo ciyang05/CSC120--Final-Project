@@ -82,15 +82,6 @@ public class Room {
 
 
     /**
-     * accesses the Person (barista or manager)
-     * @return aPerson
-     */
-    // public Person getPerson() {
-    //     return aPerson;
-    // }
-
-
-    /**
      * converts roomName to a String
      * @return roomName
      */
@@ -116,10 +107,6 @@ public class Room {
     public String getIndicies() {
         return Arrays.toString(location);
     }
-
-
-
-
 
 
 

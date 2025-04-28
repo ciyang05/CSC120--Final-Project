@@ -41,7 +41,7 @@ public class Manager extends Person{
     public void talk(Barista barista, Drink drink){
         if (sameLocation(barista)){ //if the barista's location is the same as the manager
 
-            System.out.println("Manager: I'm Berta, your manager. Answer this trivia question right and you wil get a hint to find the ingredients for your" + drink.getName());//print greeting
+            System.out.println("Manager: I'm Berta, your manager. Answer this trivia question right and you wil get a hint to find the ingredients for your " + drink.getName());//print greeting
             System.out.println("Manager: " + question);//print question
 
             String response = input.nextLine();//user inputs answer to question

@@ -19,7 +19,7 @@ public class Barista extends Person {
     
     private String answer;
 
-    // will hold ingredients that barista grabs
+    // barista/player's inventory, will hold ingredients that barista grabs
     private static ArrayList<Ingredient> baristaIngre;
 
     private Drink myDrink;
@@ -88,17 +88,22 @@ public class Barista extends Person {
         return answer;
     }
 
+    /**
+     * accesses barista's inventory 
+     * @return baristaIngre
+     */
     public static ArrayList <Ingredient> getBaristaIngre() {
         return baristaIngre;
     }
 
 
-    // NOT TESTED
-    // have to see what manager location looks like
-    // not done yet, will have to talk to Victoria to verify and test code
+    // Works!!
+    /**
+     * lets barista talk with manager 
+     * @param Berta
+     */
     public void talk(Manager Berta) {
         System.out.println("You come across Oak & Ember Cafe's notorious manager, Berta.");
-            
         Berta.talk(this, custDrink);
     } 
 
@@ -108,15 +113,15 @@ public class Barista extends Person {
      * makes the drink that customer ordered
      * @param drink
      */
-    public void makeDrink(Drink drink) {
-        if ((baristaIngre.toString().equals(drink.getIngredients().toString()))) {
-            System.out.println("Congrats! You have collected the correct ingredients for a " + drink.getName() + ". To make the drink, type 'make.'");
+    public void makeDrink(Drink custDrink) {
+        if ((baristaIngre.toString().equals(custDrink.getIngredients().toString()))) {
+            System.out.println("Congrats! You have collected the correct ingredients for a " + custDrink.getName() + ". To make the drink, type 'make.'");
             answer = input.nextLine().toLowerCase();
             
             if (answer.equals("make")) {
-                System.out.println("One " + drink.getName() + " coming right up!");
+                System.out.println("One " + custDrink.getName() + " coming right up!");
                 
-                if (drink.getName().equals("Latte")) {
+                if (custDrink.getName().equals("Latte")) {
                     System.out.println("Making latte...");
                     myDrink = Cafe.makeLatte();
                     System.out.println(myDrink.getName() + " created. To hand the drink to the customer, type 'hand.'");
@@ -125,7 +130,7 @@ public class Barista extends Person {
                         handDrink(myDrink);
                     }
                 }
-                if (drink.getName().equals("Matcha")) {
+                if (custDrink.getName().equals("Matcha")) {
                     System.out.println("Making matcha...");
                     myDrink = Cafe.makeMatcha();
                     System.out.println(myDrink.getName() + " created. To hand the drink to the customer, type 'hand.'");
@@ -135,7 +140,7 @@ public class Barista extends Person {
                     }
                     
                 }
-                if (drink.getName().equals("Americano")) {
+                if (custDrink.getName().equals("Americano")) {
                     System.out.println("Making americano...");
                     myDrink = Cafe.makeAmericano();
                     System.out.println(myDrink.getName() + " created. To hand the drink to the customer, type 'hand.'");
@@ -345,13 +350,13 @@ public class Barista extends Person {
             }
 
             if ((currentRoom.getIndicies().equals("[0, 2]")) || (currentRoom.getIndicies().equals("[1, 2]")) || (currentRoom.getIndicies().equals("[2, 1]"))) {
-                System.out.println("The " + currentRoom.getName() + " has ingredients for a drink. Would you like to pick it up? If so, type 'grab'.");
+                System.out.println("The " + currentRoom.getName() + " has ingredients for a drink. Would you like to pick it up? If so, type 'grab'. If not, type 'no'.");
                 answer = input.nextLine().toLowerCase();
 
                 if ((answer.equals("grab")) && (currentRoom.getIndicies().equals("[0, 2]"))) {
                     Drink latte = Cafe.makeLatte();
                     grabIngre(latte);
-                    makeDrink(latte);
+                    finished(latte);
                 }
 
                 if ((answer.equals("grab")) && (currentRoom.getIndicies().equals("[1, 2]"))) {
@@ -379,6 +384,7 @@ public class Barista extends Person {
     }
 
 
+
     // works
     // Drink custDrink is a placeholder for the actual drink that will be passed in as a parameter when using this method
     /**
@@ -388,7 +394,7 @@ public class Barista extends Person {
     public void grabIngre(Drink custDrink) {
 
             // testing method
-            System.out.println("These are the ingredients you will need to pick up " + custDrink.getIngredients()); // w/this method, the ingredients list is empty
+            // System.out.println("These are the ingredients you will need to pick up " + custDrink.getIngredients()); // w/this method, the ingredients list is empty
             if ((!baristaIngre.contains(custDrink.getIngredients().get(0)))) {
                 // System.out.println("This is w/out toString: " + custDrink.getIngredients().get(0));
                 // System.out.println("This is w/toString: " + custDrink.getIngredients().get(0).toString());
@@ -436,9 +442,8 @@ public class Barista extends Person {
     // works, just not sure when to implement. possibly in game loop?
     /**
      * allows player (barista) to drop ingredients
-     * @param custDrink
      */
-    public void dropIngre(Drink custDrink) {
+    public void dropIngre() {
         System.out.println("If you would like to drop your ingredients, type 'drop'.");
         answer = input.nextLine().toLowerCase();
         System.out.println("This is your current inventory: " + baristaIngre.toString());
@@ -453,6 +458,18 @@ public class Barista extends Person {
 
     }
 
+
+    // public void checkInven(Drink custDrink) {
+    //     pass;
+    // }
+
+    public void finished(Drink custDrink) {
+        if ((currentRoom.getIndicies().equals("[0, 0]")) && (baristaIngre.toString().equals(custDrink.getIngredients().toString()))) {
+            makeDrink(custDrink);
+        } else {
+            System.out.println("Looks like you are not back at the Cafe. Find your way back to make the " + custDrink.getName());
+        }
+    }
 
 
 
