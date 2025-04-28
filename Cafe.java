@@ -23,8 +23,11 @@ public class Cafe {
 
         Barista myBarista = new Barista("Kiara");
 
+        Barista.setCustDrink(myDrink);
+
         while (!myBarista.getBaristaIngre().containsAll(myDrink.getIngredients())){
-            myBarista.move(myDrink);
+            myBarista.move();
+
              
             //System.out.println("Barista is still working");
             if (myBarista.getQuit()){

@@ -61,7 +61,7 @@ public class Manager extends Person{
     //Gives hint according to the drink
     public void giveHint(Drink drink){
         if(drink.getName().equals("Latte")){ //if the drink chosen is the same as matcha
-            System.out.println("To find the ingredients for " + drink.getName() + ", go in the directions that star with 'N' and 'E'"); //give hint
+            System.out.println("To find the ingredients for " + drink.getName() + ", go in the direction that starts with 'N' then go in the direction that starts with 'E'"); //give hint
         }
         else if(drink.getName().equals("Matcha")){
             System.out.println("To find the ingredients for " + drink.getName() + ", go in the direction that starts with 'S'");
