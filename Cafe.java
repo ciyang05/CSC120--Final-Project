@@ -32,6 +32,8 @@ public class Cafe {
 
 
         Barista myBarista = new Barista("Kiara");
+
+        Barista.customerIngredient = new ArrayList<>();
     
 
         while (!myBarista.getCustomerIngredient().toString().equals(myDrink.getIngredients().toString())){
