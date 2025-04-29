@@ -24,7 +24,7 @@ public class Barista extends Person {
 
     private Drink myDrink; // drink that is created in makeDrink method
 
-    private static Drink custDrink; // drink that customer chooses, will be a randomized drink
+    private static Drink custDrink = Cafe.makeLatte(); // drink that customer chooses, will be a randomized drink
 
     // private Manager Berta_1 = new Manager("Berta", myMap, 1, 1); // manager at location [1, 1]
     // private Manager Berta_2 = new Manager("Berta", myMap, 2, 2); // manager at location [2, 2]
@@ -216,6 +216,11 @@ public class Barista extends Person {
                 System.out.println("Current room indicies" + currentRoom.getIndicies());
                 checkRoomIngre(custDrink);
                 talk(new Manager("Berta", myMap, 1, 1));
+                System.out.println("If you would like to drop your ingredients, type 'drop'. If not, type 'no'.");
+                answer = input.nextLine().toLowerCase();
+                if (answer.equals("drop")) {
+                    dropIngre();
+                }
                 finished(custDrink);
             } else {
                 System.out.println("invalid tempRow. did not move north");
@@ -238,6 +243,11 @@ public class Barista extends Person {
                 System.out.println("Current room indicies" + currentRoom.getIndicies());
                 checkRoomIngre(custDrink);
                 talk(new Manager("Berta", myMap, 1, 1));
+                System.out.println("If you would like to drop your ingredients, type 'drop'. If not, type 'no'.");
+                answer = input.nextLine().toLowerCase();
+                if (answer.equals("drop")) {
+                    dropIngre();
+                }
                 finished(custDrink);
             } else {
                 System.out.println("invalid tempRow. did not move south");
@@ -260,6 +270,11 @@ public class Barista extends Person {
                 System.out.println("Current room indicies" + currentRoom.getIndicies());
                 checkRoomIngre(custDrink);
                 talk(new Manager("Berta", myMap, 1, 1));
+                System.out.println("If you would like to drop your ingredients, type 'drop'. If not, type 'no'.");
+                answer = input.nextLine().toLowerCase();
+                if (answer.equals("drop")) {
+                    dropIngre();
+                }
                 finished(custDrink);
             } else {
                 System.out.println("invalid tempRow. did not move south");
@@ -283,6 +298,11 @@ public class Barista extends Person {
                 System.out.println("Current room indicies" + currentRoom.getIndicies());
                 checkRoomIngre(custDrink);
                 talk(new Manager("Berta", myMap, 1, 1));
+                System.out.println("If you would like to drop your ingredients, type 'drop'. If not, type 'no'.");
+                answer = input.nextLine().toLowerCase();
+                if (answer.equals("drop")) {
+                    dropIngre();
+                }
                 finished(custDrink);
 
             } else {
@@ -355,8 +375,6 @@ public class Barista extends Person {
      * allows player (barista) to drop ingredients
      */
     public void dropIngre() {
-        System.out.println("If you would like to drop your ingredients, type 'drop'. If not, type 'no'.");
-        answer = input.nextLine().toLowerCase();
         System.out.println("This is your current inventory: " + baristaIngre.toString());
 
         if ((answer.equals("drop")) && (!baristaIngre.isEmpty())) {
@@ -419,7 +437,7 @@ public class Barista extends Person {
                 Drink matcha = Cafe.makeMatcha();
                 grabIngre(matcha);
             }
-        }
+        } 
     }
 
 
