@@ -29,16 +29,18 @@ public class Cafe {
              
             //System.out.println("Barista is still working");
             if (myBarista.getQuit()){
-                //System.out.println("You decided to quit");
+                System.out.println("You decided to quit");
                 break;
             }
         
         }
         System.out.println("You completed the game!");
+        }
+        
 
 
         
-    }
+
 
     public static Drink getRandomDrink(ArrayList<Drink> drinks) {
         Random random = new Random();

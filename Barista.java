@@ -95,7 +95,7 @@ public class Barista extends Person {
      * accesses barista's inventory 
      * @return baristaIngre
      */
-    public static ArrayList <Ingredient> getBaristaIngre() {
+    public ArrayList <Ingredient> getBaristaIngre() {
         return baristaIngre;
     }
 
