@@ -17,6 +17,16 @@ public class Cafe {
 
         Drink myDrink = getRandomDrink(drinks);
 
+        
+
+        // Barista.customerIngredient.add(new Ingredient("a", "b", 0));
+        // Barista.customerIngredient.add(new Ingredient("a", "b", 0));
+        // Barista.customerIngredient.add(new Ingredient("a", "b", 0));
+        // Barista.customerIngredient.add(new Ingredient("a", "b", 0));
+
+        System.out.println(Barista.customerIngredient);
+
+
         Customer myCustomer = new Customer("Chiashi");
         myCustomer.orderDrink(myDrink);
 

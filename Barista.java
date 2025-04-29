@@ -27,7 +27,7 @@ public class Barista extends Person {
 
     private static Drink custDrink = Cafe.makeLatte(); // drink that customer chooses, will be a randomized drink
 
-    private static ArrayList<Ingredient> customerIngredient; // customer ingredient list
+    public static ArrayList<Ingredient> customerIngredient; // customer ingredient list
 
 
     // private Manager Berta_1 = new Manager("Berta", myMap, 1, 1); // manager at location [1, 1]
@@ -472,10 +472,14 @@ public class Barista extends Person {
     // debugging purposes
     public static void main(String[] args) {
 
+        ArrayList<Ingredient>customerIngredient = new ArrayList<>();
+
         customerIngredient.add(new Ingredient("a", "b", 0));
         customerIngredient.add(new Ingredient("a", "b", 0));
         customerIngredient.add(new Ingredient("a", "b", 0));
         customerIngredient.add(new Ingredient("a", "b", 0));
+
+        System.out.println(customerIngredient);
 
         System.out.println(customerIngredient.toString());
         System.out.println("Welcome to the game!");
