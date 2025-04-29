@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 import java.util.Scanner;
-import java.util.function.UnaryOperator;
+
 
 public class Barista extends Person {
     
@@ -27,7 +27,7 @@ public class Barista extends Person {
 
     private static Drink custDrink = Cafe.makeLatte(); // drink that customer chooses, will be a randomized drink
 
-    private static ArrayList<Ingredient>customerIngredient; // customer ingredient list
+    private static ArrayList<Ingredient> customerIngredient; // customer ingredient list
 
 
     // private Manager Berta_1 = new Manager("Berta", myMap, 1, 1); // manager at location [1, 1]
@@ -112,7 +112,7 @@ public class Barista extends Person {
         custDrink = drink;
     }
 
-    public static ArrayList<Ingredient> getCustomerList(){
+    public static ArrayList<Ingredient> getCustomerIngredient(){
         return customerIngredient;
     }
 
@@ -198,7 +198,8 @@ public class Barista extends Person {
      */
     public void handDrink(Drink drink) {
         System.out.println("Barista: Here is your " + drink.getName() + "! Enjoy!");
-        getCustomerList().replaceAll(baristaIngre);
+        getCustomerIngredient().clear();
+        getCustomerIngredient().addAll(baristaIngre);
     }
 
 
@@ -471,10 +472,11 @@ public class Barista extends Person {
     // debugging purposes
     public static void main(String[] args) {
 
-        addCustIngre(new Ingredient("a", "b", 0));
-        addCustIngre(new Ingredient("a", "b", 0));
-        addCustIngre(new Ingredient("a", "b", 0));
-        addCustIngre(new Ingredient("a", "b", 0));
+        customerIngredient.add(new Ingredient("a", "b", 0));
+        customerIngredient.add(new Ingredient("a", "b", 0));
+        customerIngredient.add(new Ingredient("a", "b", 0));
+        customerIngredient.add(new Ingredient("a", "b", 0));
+
         System.out.println(customerIngredient.toString());
         System.out.println("Welcome to the game!");
         Barista myBarista = new Barista("Chiashi");
