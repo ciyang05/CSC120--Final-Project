@@ -17,27 +17,34 @@ public class Cafe {
 
         Drink myDrink = getRandomDrink(drinks);
 
-        Customer computer = new Customer("Computer");
-        computer.orderDrink(myDrink);
+        Customer myCustomer = new Customer("Chiashi");
+        myCustomer.orderDrink(myDrink);
 
 
         Barista myBarista = new Barista("Kiara");
     
 
-        while (!myBarista.getBaristaIngre().containsAll(myDrink.getIngredients())){
+        while (myBarista.getCustomerList().toString().equals(myDrink.getIngredients().toString())){
             myBarista.move(myDrink);
              
             //System.out.println("Barista is still working");
             if (myBarista.getQuit()){
-                System.out.println("You decided to quit");
+                //System.out.println("You decided to quit");
+                break;
+            
+        
+            }    
+
+            if (myBarista.getCustomerList().toString().equals(myDrink.getIngredients().toString())){
+
                 break;
             }
         
         }
         System.out.println("You completed the game!");
-        }
-        
 
+        
+    }
 
         
 
