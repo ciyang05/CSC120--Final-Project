@@ -418,7 +418,9 @@ public class Barista extends Person {
         if ((currentRoom.getIndicies().equals("[0, 0]")) && (baristaIngre.toString().equals(custDrink.getIngredients().toString()))) {
             System.out.println("Congrats! You have made it back to the Cafe and have all your ingredients!");
             makeDrink(custDrink);
-        } 
+        } else if ((!currentRoom.getIndicies().equals("[0, 0]")) ) {
+            System.out.println("You may not enter the Cafe until you find the ingredients for the " + custDrink.getName() + "!");
+        }
     }
 
 
