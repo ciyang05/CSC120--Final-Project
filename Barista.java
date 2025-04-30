@@ -124,6 +124,10 @@ public class Barista extends Person {
         return customerIngredient;
     }
 
+    /**
+     * adds ingredients to customer inventory for drink
+     * @param custIngre
+     */
     public static void addCustIngre(Ingredient custIngre){
         customerIngredient.add(custIngre);
         customerIngredient.add(custIngre);
@@ -239,6 +243,9 @@ public class Barista extends Person {
                 rowIndex = tempRow;
                 System.out.println("new rowIndex:" + rowIndex);
                 System.out.println("current colIndex:" + colIndex);
+                if ((rowIndex == 0) && (colIndex == 0) && (baristaIngre.isEmpty())) {
+                    System.out.println("You cannot return to the Cafe yet! Find the ingredients first!");
+                }
                 currentRoom = myMap.getArray_Map()[rowIndex][colIndex];
                 System.out.println(currentRoom.toString());
                 System.out.println("Current room indicies" + currentRoom.getIndicies());
@@ -266,6 +273,9 @@ public class Barista extends Person {
                 rowIndex = tempRow;
                 System.out.println("new rowIndex:" + rowIndex);
                 System.out.println("current colIndex:" + colIndex);
+                if ((rowIndex == 0) && (colIndex == 0) && (baristaIngre.isEmpty())) {
+                    System.out.println("You cannot return to the Cafe yet! Find the ingredients first!");
+                }
                 currentRoom = myMap.getArray_Map()[rowIndex][colIndex];
                 System.out.println(currentRoom.toString());
                 System.out.println("Current room indicies" + currentRoom.getIndicies());
@@ -293,6 +303,9 @@ public class Barista extends Person {
                 colIndex = tempCol;
                 System.out.println("new colIndex:" + colIndex);
                 System.out.println("current rowIndex:" + rowIndex);
+                if ((rowIndex == 0) && (colIndex == 0) && (baristaIngre.isEmpty())) {
+                    System.out.println("You cannot return to the Cafe yet! Find the ingredients first!");
+                }
                 currentRoom = myMap.getArray_Map()[rowIndex][colIndex];
                 System.out.println(currentRoom.toString());
                 System.out.println("Current room indicies" + currentRoom.getIndicies());
@@ -427,10 +440,7 @@ public class Barista extends Person {
         if ((currentRoom.getIndicies().equals("[0, 0]")) && (baristaIngre.toString().equals(custDrink.getIngredients().toString()))) {
             System.out.println("Congrats! You have made it back to the Cafe and have all your ingredients!");
             makeDrink(custDrink);
-        } else if ((!currentRoom.getIndicies().equals("[0, 0]")) ) {
-            System.out.println("You may not enter the Cafe until you find the ingredients for the " + custDrink.getName() + "!");
-        }
-    }
+    }}
 
 
     // works!
@@ -508,11 +518,7 @@ public class Barista extends Person {
             String start = input.nextLine();
         }
 
+
     }
-
-
-
-    
-
 
 }
