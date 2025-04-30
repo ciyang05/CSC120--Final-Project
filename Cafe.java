@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.Random;
+import java.util.Scanner;
 
 public class Cafe {
 
@@ -28,6 +29,7 @@ public class Cafe {
     
         // Loop checks if customer ingredients are equal to drink ingredients
         while (!Barista.getCustomerIngredient().toString().equals(myDrink.getIngredients().toString())){ 
+            help();
             myBarista.move(myDrink); // Allows barista(player) to move through cafe
              
             //System.out.println("Barista is still working");
@@ -104,5 +106,31 @@ public class Cafe {
         return americano;
 
     }
+
+    /**
+     * Method to display instructions if user needs help
+     */
+    public static void help(){
+    Scanner scanner = new Scanner(System.in);
+    System.out.println("If you need help type help");
+    String helpVar = scanner.nextLine();
+     
+    if (helpVar.equals("help")){
+        System.out.println("What do you need help with: \n 1: Directions \n 2: Commands \n 3. Quit");
+        String userOption = scanner.nextLine();
+        if (userOption.equals("1")){
+            System.out.println("To go south input south \n to go north input north \n to go east input east \n to go west input west");
+        }
+        if (userOption.equals("2")){
+            System.out.println("To grab input grab\n to make drink input drink \n to hand drink input hand");
+        }
+        if (userOption.equals("3")){
+            System.out.println("To quit game input quit or complete the game through making the correct drink");
+        }
+
+    
+    }
+   
+}
 
 }
