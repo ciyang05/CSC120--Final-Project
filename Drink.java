@@ -1,20 +1,28 @@
 
 import java.util.ArrayList;
-
+//Attributes
 public class Drink {
 String name;
 ArrayList<Ingredient>ingredients;
 
-
+/**
+ * Constructor for drink
+ * @param name of drink
+ */
 public Drink(String name){
    this.name = name;
    this.ingredients = new ArrayList<>();
 }
  
+/**
+ * Method to add ingredients for each drink
+ */
 public void addIngredient(String name, String units, double amount){
     ingredients.add(new Ingredient(name, units, amount));
 }
-
+/**
+ * 
+ */
 public void printIngredients() {
     System.out.println(name +" " + "Ingredients:");
     for (Ingredient ingredient: ingredients ){
@@ -22,10 +30,18 @@ public void printIngredients() {
     }
 
 } 
-
+/**
+ * toString method for ingredients
+ * @return ingredients
+ */
 public String toString() {
     return ingredients.toString();
 }
+
+/**
+ * arrayList to hold all drink ingredients
+ * @return ingredients
+ */
 
 public ArrayList<Ingredient>getIngredients(){
     return ingredients;
