@@ -48,7 +48,10 @@ public ArrayList<Ingredient>getIngredients(){
 }
 
 
-//Getter for the name
+/**
+ * Getter for drink name
+ * @return name
+ */
 public String getName(){
     return name;
 }
