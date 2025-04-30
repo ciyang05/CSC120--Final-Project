@@ -25,13 +25,9 @@ public class Barista extends Person {
 
     private Drink myDrink; // drink that is created in makeDrink method
 
-    private static Drink custDrink = Cafe.makeLatte(); // drink that customer chooses, will be a randomized drink
+    private static Drink custDrink; // drink that customer chooses, will be a randomized drink
 
-    public static ArrayList<Ingredient> customerIngredient; // customer ingredient list
-
-
-    // private Manager Berta_1 = new Manager("Berta", myMap, 1, 1); // manager at location [1, 1]
-    // private Manager Berta_2 = new Manager("Berta", myMap, 2, 2); // manager at location [2, 2]
+    public static ArrayList<Ingredient> customerIngredient; // customer inventory for ingredients 
    
 
 
@@ -99,19 +95,31 @@ public class Barista extends Person {
      * accesses barista's inventory 
      * @return baristaIngre
      */
-    public ArrayList <Ingredient> getBaristaIngre() {
+    public static ArrayList <Ingredient> getBaristaIngre() {
         return baristaIngre;
     }
 
+    /**
+     * accesses the customer drink
+     * @return custDrink
+     */
     public static Drink getCustDrink() {
         return custDrink;
     }
 
 
+    /**
+     * sets custDrink equal to drink
+     * @param drink
+     */
     public static void setCustDrink(Drink drink) {
         custDrink = drink;
     }
 
+    /**
+     * accesses customer inventory 
+     * @return customerIngredient 
+     */
     public static ArrayList<Ingredient> getCustomerIngredient(){
         return customerIngredient;
     }
@@ -131,7 +139,8 @@ public class Barista extends Person {
      * lets barista talk with manager 
      * @param Berta
      */
-    public void talk(Manager Berta) {
+    public void talk(Manager Berta, Drink custDrink) {
+        System.out.println(custDrink.getName());
         if ((currentRoom.getIndicies().equals("[1, 1]"))) {
             System.out.println("You come across Oak & Ember Cafe's notorious manager, Berta.");
             Berta.talk(this, custDrink);
@@ -234,7 +243,7 @@ public class Barista extends Person {
                 System.out.println(currentRoom.toString());
                 System.out.println("Current room indicies" + currentRoom.getIndicies());
                 checkRoomIngre(custDrink);
-                talk(new Manager("Berta", myMap, 1, 1));
+                talk(new Manager("Berta", myMap, 1, 1), custDrink);
                 System.out.println("If you would like to drop your ingredients, type 'drop'. If not, type 'no'.");
                 answer = input.nextLine().toLowerCase();
                 if (answer.equals("drop")) {
@@ -261,7 +270,7 @@ public class Barista extends Person {
                 System.out.println(currentRoom.toString());
                 System.out.println("Current room indicies" + currentRoom.getIndicies());
                 checkRoomIngre(custDrink);
-                talk(new Manager("Berta", myMap, 1, 1));
+                talk(new Manager("Berta", myMap, 1, 1), custDrink);
                 System.out.println("If you would like to drop your ingredients, type 'drop'. If not, type 'no'.");
                 answer = input.nextLine().toLowerCase();
                 if (answer.equals("drop")) {
@@ -288,7 +297,7 @@ public class Barista extends Person {
                 System.out.println(currentRoom.toString());
                 System.out.println("Current room indicies" + currentRoom.getIndicies());
                 checkRoomIngre(custDrink);
-                talk(new Manager("Berta", myMap, 1, 1));
+                talk(new Manager("Berta", myMap, 1, 1), custDrink);
                 System.out.println("If you would like to drop your ingredients, type 'drop'. If not, type 'no'.");
                 answer = input.nextLine().toLowerCase();
                 if (answer.equals("drop")) {
@@ -316,7 +325,7 @@ public class Barista extends Person {
                 System.out.println(currentRoom.toString());
                 System.out.println("Current room indicies" + currentRoom.getIndicies());
                 checkRoomIngre(custDrink);
-                talk(new Manager("Berta", myMap, 1, 1));
+                talk(new Manager("Berta", myMap, 1, 1), custDrink);
                 System.out.println("If you would like to drop your ingredients, type 'drop'. If not, type 'no'.");
                 answer = input.nextLine().toLowerCase();
                 if (answer.equals("drop")) {
@@ -481,9 +490,9 @@ public class Barista extends Person {
         customerIngredient.add(new Ingredient("a", "b", 0));
         customerIngredient.add(new Ingredient("a", "b", 0));
 
-        System.out.println(customerIngredient);
+        // System.out.println(customerIngredient);
 
-        System.out.println(customerIngredient.toString());
+        // System.out.println(customerIngredient.toString());
         System.out.println("Welcome to the game!");
         Barista myBarista = new Barista("Chiashi");
         System.out.println(myBarista);

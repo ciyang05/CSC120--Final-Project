@@ -24,7 +24,7 @@ public class Cafe {
         // Barista.customerIngredient.add(new Ingredient("a", "b", 0));
         // Barista.customerIngredient.add(new Ingredient("a", "b", 0));
 
-        System.out.println(Barista.customerIngredient);
+        // System.out.println(Barista.customerIngredient);
 
 
         Customer myCustomer = new Customer("Chiashi");
