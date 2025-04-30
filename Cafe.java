@@ -36,7 +36,7 @@ public class Cafe {
         Barista.customerIngredient = new ArrayList<>();
     
 
-        while (!myBarista.getCustomerIngredient().toString().equals(myDrink.getIngredients().toString())){
+        while (!Barista.getCustomerIngredient().toString().equals(myDrink.getIngredients().toString())){
             myBarista.move(myDrink);
              
             //System.out.println("Barista is still working");
@@ -47,7 +47,7 @@ public class Cafe {
         
             }    
 
-            if (myBarista.getCustomerIngredient().toString().equals(myDrink.getIngredients().toString())){
+            if (Barista.getCustomerIngredient().toString().equals(myDrink.getIngredients().toString())){
                 break;
             }
         
