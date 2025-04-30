@@ -25,7 +25,7 @@ public class Cafe {
 
         Barista myBarista = new Barista("Kiara");
 
-        Barista.customerIngredient = new ArrayList<>();
+        // Barista.customerIngredient = new ArrayList<>();
     
         // Loop checks if customer ingredients are equal to drink ingredients
         while (!Barista.getCustomerIngredient().toString().equals(myDrink.getIngredients().toString())){ 

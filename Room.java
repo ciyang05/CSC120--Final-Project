@@ -45,10 +45,6 @@ public class Room {
     }
 
 
-    public Room(String string, String string2, Person person) {
-        //TODO Auto-generated constructor stub
-    }
-
 
     /**
      * accessor for name of room
