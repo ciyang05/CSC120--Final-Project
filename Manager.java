@@ -53,6 +53,9 @@ public class Manager extends Person{
                 System.out.println("Wrong answer, no hint for you!");
             }
         }
+        if (sameLocation(barista) && !getBaristaIngre().isempty ){
+
+        }
         else { //if barista is not in the same location as manager, then return nothing
             return;
         }
@@ -69,7 +72,7 @@ public class Manager extends Person{
         else if (drink.getName().equals("Americano")){
             System.out.println("To find the ingredients for " + drink.getName() + ", go in the direction that starts with 'E'"); //add drinks as needed, not finished yet
         }
-        else{
+        else {
             return;
         }
     }
