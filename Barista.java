@@ -19,6 +19,7 @@ public class Barista extends Person {
     private Room currentRoom;
     
     private String answer;
+    private String direction;
 
     // barista/player's inventory, will hold ingredients that barista grabs
     private static ArrayList<Ingredient> baristaIngre;
@@ -27,7 +28,10 @@ public class Barista extends Person {
 
     private static Drink custDrink; // drink that customer chooses, will be a randomized drink
 
-    public static ArrayList<Ingredient> customerIngredient; // customer inventory for ingredients 
+    private static ArrayList<Ingredient> customerIngredient = new ArrayList<>(); // customer inventory for ingredients
+
+    private boolean hasLeftCafe = false; // tracks if player left cafe, will turn true if player leaves
+    
    
 
 
@@ -124,6 +128,10 @@ public class Barista extends Person {
         return customerIngredient;
     }
 
+    /**
+     * adds ingredients to customer inventory for drink
+     * @param custIngre
+     */
     public static void addCustIngre(Ingredient custIngre){
         customerIngredient.add(custIngre);
         customerIngredient.add(custIngre);
@@ -140,7 +148,7 @@ public class Barista extends Person {
      * @param Berta
      */
     public void talk(Manager Berta, Drink custDrink) {
-        System.out.println(custDrink.getName());
+        // System.out.println(custDrink.getName());
         if ((currentRoom.getIndicies().equals("[1, 1]"))) {
             System.out.println("You come across Oak & Ember Cafe's notorious manager, Berta.");
             Berta.talk(this, custDrink);
@@ -160,6 +168,11 @@ public class Barista extends Person {
         if ((baristaIngre.toString().equals(custDrink.getIngredients().toString()))) {
             System.out.println("To make the " + custDrink.getName() + " type 'make.'");
             answer = input.nextLine().toLowerCase();
+
+            if (answer.equals("help")) {
+                Cafe.help();
+            }
+
             
             if (answer.equals("make")) {
                 System.out.println("One " + custDrink.getName() + " coming right up!");
@@ -190,11 +203,12 @@ public class Barista extends Person {
                     answer = input.nextLine().toLowerCase();
                     if (answer.equals("hand")) {
                         handDrink(myDrink);
-                    }
+                    } 
                 }
 
             } else {
                 System.out.println("You did not type 'make.' Try again.");
+                makeDrink(custDrink);
             }
         }
     }
@@ -220,121 +234,121 @@ public class Barista extends Person {
         
         System.out.println("Where would you like to go? Your options are north, east, south, or west.");
         System.out.println("If you would like to quit the game, type 'quit'.");
-        String direction = input.nextLine().toLowerCase();
+        direction = input.nextLine().toLowerCase();
 
         if (direction.equals("quit")) {
             quitFlag = true;
             System.out.println("Thanks for playing!");
             return;
+        } if (direction.equals("help")) {
+            Cafe.help();
+        } else if (direction.equals("drop")) {
+            dropIngre();
         }
 
 
         if (direction.equals("north")) {
-            System.out.println("The indicies before moving are " + currentRoom.getIndicies());
+            // System.out.println("The indicies before moving are " + currentRoom.getIndicies());
             int tempRow = getRow() - 1;
-            System.out.println("this is tempRow:" + tempRow);
+            // System.out.println("this is tempRow:" + tempRow);
             
             if ((tempRow <= myMap.getMaxRow()) && (tempRow >= myMap.getLeastRow())) {
-                System.out.println("valid tempRow");
+                // System.out.println("valid tempRow");
                 rowIndex = tempRow;
-                System.out.println("new rowIndex:" + rowIndex);
-                System.out.println("current colIndex:" + colIndex);
+                // System.out.println("new rowIndex:" + rowIndex);
+                // System.out.println("current colIndex:" + colIndex);
                 currentRoom = myMap.getArray_Map()[rowIndex][colIndex];
+                leftCafe();
                 System.out.println(currentRoom.toString());
-                System.out.println("Current room indicies" + currentRoom.getIndicies());
+                // System.out.println("Current room indicies" + currentRoom.getIndicies());
+                enterCafe();
                 checkRoomIngre(custDrink);
                 talk(new Manager("Berta", myMap, 1, 1), custDrink);
-                System.out.println("If you would like to drop your ingredients, type 'drop'. If not, type 'no'.");
-                answer = input.nextLine().toLowerCase();
-                if (answer.equals("drop")) {
-                    dropIngre();
-                }
+                System.out.println("To empty your inventory, type 'drop' at any point in your adventure.");
                 finished(custDrink);
             } else {
-                System.out.println("invalid tempRow. did not move north");
+                // System.out.println("invalid tempRow. did not move north");
+                System.out.println("Invalid direction. You cannot move north.");
             }
         
     }
 
         if (direction.equals("south")) {
-            System.out.println("The indicies before moving are " + currentRoom.getIndicies());
+            // System.out.println("The indicies before moving are " + currentRoom.getIndicies());
             int tempRow = getRow() + 1;
-            System.out.println("this is tempRow:" + tempRow);
+            // System.out.println("this is tempRow:" + tempRow);
             
             if ((tempRow <= myMap.getMaxRow()) && (tempRow >= myMap.getLeastRow())) {
-                System.out.println("valid tempRow");
+                // System.out.println("valid tempRow");
                 rowIndex = tempRow;
-                System.out.println("new rowIndex:" + rowIndex);
-                System.out.println("current colIndex:" + colIndex);
+                // System.out.println("new rowIndex:" + rowIndex);
+                // System.out.println("current colIndex:" + colIndex);
                 currentRoom = myMap.getArray_Map()[rowIndex][colIndex];
+                leftCafe();
                 System.out.println(currentRoom.toString());
-                System.out.println("Current room indicies" + currentRoom.getIndicies());
+                // System.out.println("Current room indicies" + currentRoom.getIndicies());
+                enterCafe();
                 checkRoomIngre(custDrink);
                 talk(new Manager("Berta", myMap, 1, 1), custDrink);
-                System.out.println("If you would like to drop your ingredients, type 'drop'. If not, type 'no'.");
-                answer = input.nextLine().toLowerCase();
-                if (answer.equals("drop")) {
-                    dropIngre();
-                }
+                System.out.println("To empty your inventory, type 'drop' at any point in your adventure.");
                 finished(custDrink);
             } else {
-                System.out.println("invalid tempRow. did not move south");
+                // System.out.println("invalid tempRow. did not move south");
+                System.out.println("Invalid direction. You cannot move south.");
             }
     }
 
 
         if (direction.equals("west")) {
-            System.out.println("The indicies before moving are " + currentRoom.getIndicies());
+            // System.out.println("The indicies before moving are " + currentRoom.getIndicies());
             int tempCol = getCol() - 1;
-            System.out.println("this is tempCol:" + tempCol);
+            // System.out.println("this is tempCol:" + tempCol);
             
             if ((tempCol <= myMap.getMaxCol()) && (tempCol >= myMap.getLeastCol())) {
-                System.out.println("valid tempCol");
+                // System.out.println("valid tempCol");
                 colIndex = tempCol;
-                System.out.println("new colIndex:" + colIndex);
-                System.out.println("current rowIndex:" + rowIndex);
+                // System.out.println("new colIndex:" + colIndex);
+                // System.out.println("current rowIndex:" + rowIndex);
                 currentRoom = myMap.getArray_Map()[rowIndex][colIndex];
+                leftCafe();
                 System.out.println(currentRoom.toString());
-                System.out.println("Current room indicies" + currentRoom.getIndicies());
+                // System.out.println("Current room indicies" + currentRoom.getIndicies());
+                enterCafe();
                 checkRoomIngre(custDrink);
                 talk(new Manager("Berta", myMap, 1, 1), custDrink);
-                System.out.println("If you would like to drop your ingredients, type 'drop'. If not, type 'no'.");
-                answer = input.nextLine().toLowerCase();
-                if (answer.equals("drop")) {
-                    dropIngre();
-                }
+                System.out.println("To empty your inventory, type 'drop' at any point in your adventure.");
                 finished(custDrink);
             } else {
-                System.out.println("invalid tempRow. did not move south");
+                // System.out.println("invalid tempRow. did not move south");
+                System.out.println("Invalid direction. You cannot move west.");
             }
 
     }
 
         
         if (direction.equals("east")) {
-            System.out.println("The indicies before moving are " + currentRoom.getIndicies());
+            // System.out.println("The indicies before moving are " + currentRoom.getIndicies());
             int tempCol = getCol() + 1;
-            System.out.println("this is tempCol:" + tempCol);
+            // System.out.println("this is tempCol:" + tempCol);
             
             if ((tempCol <= myMap.getMaxCol()) && (tempCol >= myMap.getLeastCol())) {
-                System.out.println("valid tempCol");
+                // System.out.println("valid tempCol");
                 colIndex = tempCol;
-                System.out.println("new colIndex:" + colIndex);
-                System.out.println("current rowIndex:" + rowIndex);
+                // System.out.println("new colIndex:" + colIndex);
+                // System.out.println("current rowIndex:" + rowIndex);
                 currentRoom = myMap.getArray_Map()[rowIndex][colIndex];
+                leftCafe();
                 System.out.println(currentRoom.toString());
-                System.out.println("Current room indicies" + currentRoom.getIndicies());
+                // System.out.println("Current room indicies" + currentRoom.getIndicies());
+                enterCafe();
                 checkRoomIngre(custDrink);
+                System.out.println("To empty your inventory, type 'drop' at any point in your adventure.");
                 talk(new Manager("Berta", myMap, 1, 1), custDrink);
-                System.out.println("If you would like to drop your ingredients, type 'drop'. If not, type 'no'.");
-                answer = input.nextLine().toLowerCase();
-                if (answer.equals("drop")) {
-                    dropIngre();
-                }
                 finished(custDrink);
 
             } else {
-                System.out.println("invalid tempCol. did not move east");
+                // System.out.println("invalid tempCol. did not move east");
+                System.out.println("Invalid direction. You cannot move east.");
             }
    
 
@@ -342,6 +356,41 @@ public class Barista extends Person {
                 
     }
 
+
+    public void leftCafe() {
+        System.out.println(hasLeftCafe);
+        if (!currentRoom.getIndicies().equals("[0, 0]")) {
+            hasLeftCafe = true;
+            // System.out.println(hasLeftCafe);
+        }
+    }
+
+
+    public void enterCafe() {
+        System.out.println(direction);
+        if ((hasLeftCafe) && (baristaIngre.isEmpty()) && (currentRoom.getIndicies().equals("[0, 0]"))) {
+            System.out.println("You cannot enter the Cafe until you collect the ingredients!");
+            // System.out.println("The direction entered is " + direction);
+            if (direction.equals("north")) {
+                rowIndex = 1;
+                colIndex = 0;
+                // System.out.println(rowIndex);
+                // System.out.println(colIndex);
+                currentRoom = myMap.getArray_Map()[1][0];
+                // System.out.println(currentRoom.getIndicies());
+                System.out.println("You are still in the " + currentRoom.getName());
+            } else if (direction.equals("west")) {
+                rowIndex = 0;
+                colIndex = 1;
+                // System.out.println(rowIndex);
+                // System.out.println(colIndex);
+                currentRoom = myMap.getArray_Map()[0][1];
+                // System.out.println(currentRoom.getIndicies());
+                System.out.println("You are still in the " + currentRoom.getName());
+
+            }
+        }
+    }
 
 
     // works
@@ -398,19 +447,19 @@ public class Barista extends Person {
         }
 
     
-    // not sure when to use
+
     /**
      * allows player (barista) to drop ingredients
      */
     public void dropIngre() {
         System.out.println("This is your current inventory: " + baristaIngre.toString());
 
-        if ((answer.equals("drop")) && (!baristaIngre.isEmpty())) {
+        if ((direction.equals("drop")) && (!baristaIngre.isEmpty())) {
             baristaIngre.removeIf(n -> true); // removes ingredients according to parameter
             System.out.println("You have dropped all of your ingredients!");
             System.out.println("Updated inventory: " + baristaIngre.toString());
         } else {
-            System.out.println("Guess you don't want to drop your ingredients!");
+            System.out.println("Guess you don't want to empty your inventory!");
         }
 
     }
@@ -427,10 +476,7 @@ public class Barista extends Person {
         if ((currentRoom.getIndicies().equals("[0, 0]")) && (baristaIngre.toString().equals(custDrink.getIngredients().toString()))) {
             System.out.println("Congrats! You have made it back to the Cafe and have all your ingredients!");
             makeDrink(custDrink);
-        } else if ((!currentRoom.getIndicies().equals("[0, 0]")) ) {
-            System.out.println("You may not enter the Cafe until you find the ingredients for the " + custDrink.getName() + "!");
-        }
-    }
+    }}
 
 
     // works!
@@ -446,6 +492,8 @@ public class Barista extends Person {
             if ((answer.equals("grab"))) {
                 Drink latte = Cafe.makeLatte();
                 grabIngre(latte);
+            } else if (answer.equals("help")) {
+                Cafe.help();
             }
         }
 
@@ -456,6 +504,8 @@ public class Barista extends Person {
             if ((answer.equals("grab"))) {
                 Drink americano = Cafe.makeAmericano();
                 grabIngre(americano);
+            } else if (answer.equals("help")) {
+                Cafe.help();
             }
         }
 
@@ -466,6 +516,8 @@ public class Barista extends Person {
             if ((answer.equals("grab"))) {
                 Drink matcha = Cafe.makeMatcha();
                 grabIngre(matcha);
+            } else if (answer.equals("help")) {
+                Cafe.help();
             }
         } 
     }
@@ -508,11 +560,7 @@ public class Barista extends Person {
             String start = input.nextLine();
         }
 
+
     }
-
-
-
-    
-
 
 }

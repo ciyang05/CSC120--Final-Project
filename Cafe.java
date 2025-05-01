@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.Random;
+import java.util.Scanner;
 
 public class Cafe {
 
@@ -17,15 +18,6 @@ public class Cafe {
 
         Drink myDrink = getRandomDrink(drinks);
 
-        
-
-        // Barista.customerIngredient.add(new Ingredient("a", "b", 0));
-        // Barista.customerIngredient.add(new Ingredient("a", "b", 0));
-        // Barista.customerIngredient.add(new Ingredient("a", "b", 0));
-        // Barista.customerIngredient.add(new Ingredient("a", "b", 0));
-
-        // System.out.println(Barista.customerIngredient);
-
 
         Customer myCustomer = new Customer("Chiashi");
         myCustomer.orderDrink(myDrink);
@@ -33,32 +25,39 @@ public class Cafe {
 
         Barista myBarista = new Barista("Kiara");
 
-        Barista.customerIngredient = new ArrayList<>();
+        // Barista.customerIngredient = new ArrayList<>();
     
+        System.out.println("If you need help with commands at any point in the your adventure, type 'help'.");
 
-        while (!myBarista.getCustomerIngredient().toString().equals(myDrink.getIngredients().toString())){
-            myBarista.move(myDrink);
+        // Loop checks if customer ingredients are equal to drink ingredients
+        while (!Barista.getCustomerIngredient().toString().equals(myDrink.getIngredients().toString())){ 
+            myBarista.move(myDrink); // Allows barista(player) to move through cafe
              
             //System.out.println("Barista is still working");
-            if (myBarista.getQuit()){
+            if (myBarista.getQuit()){ // Exits game if player wants to quit
                 //System.out.println("You decided to quit");
                 break;
             
         
             }    
 
-            if (myBarista.getCustomerIngredient().toString().equals(myDrink.getIngredients().toString())){
+            if (Barista.getCustomerIngredient().toString().equals(myDrink.getIngredients().toString())){
                 break;
             }
         
         }
+        // Loop ends once customer ingredients are equal to drink ingredients
         System.out.println("You completed the game!");
 
         
     }
 
         
-
+    /**
+     * Randomizes customer's drink order
+     * @param drinks
+     * @return randomDrink
+     */
 
     public static Drink getRandomDrink(ArrayList<Drink> drinks) {
         Random random = new Random();
@@ -68,6 +67,11 @@ public class Cafe {
 
     }
 
+    /**
+     * makes a new drink "latte"
+     * @return Drink latte
+     */
+
     public static Drink makeLatte() {
         Drink latte = new Drink("Latte");
         latte.addIngredient("Caramel Syrup", "pumps", 2);
@@ -76,7 +80,10 @@ public class Cafe {
         latte.addIngredient("Espresso", "shots", 2);
         return latte;
     }
-
+    /**
+     * makes a new drink "matcha"
+     * @return Drink matcha
+     */
     public static Drink makeMatcha() {
         Drink matcha = new Drink("Matcha");
         matcha.addIngredient("Vanilla Syrup", "pumps", 2);
@@ -85,6 +92,11 @@ public class Cafe {
         matcha.addIngredient("Matcha Powder", "teaspoons", 3);
         return matcha;
     }
+
+    /**
+     * makes a new drink "americano"
+     * @return Drink americano
+     */
 
     public static Drink makeAmericano() {
         Drink americano = new Drink("Americano");
@@ -96,4 +108,28 @@ public class Cafe {
 
     }
 
+    /**
+     * Method to display instructions if user needs help
+     */
+    public static void help(){
+        Scanner scanner = new Scanner(System.in);
+    // System.out.println("If you need help type help");
+    // String helpVar = scanner.nextLine();
+     
+    // if (helpVar.equals("help")){
+        System.out.println("What do you need help with: \n 1: Directions \n 2: Commands \n 3. Quit");
+        String userOption = scanner.nextLine();
+        if (userOption.equals("1")){
+            System.out.println("To go south input south \n to go north input north \n to go east input east \n to go west input west");
+        }
+        if (userOption.equals("2")){
+            System.out.println("To grab input grab\n to make drink input drink \n to hand drink input hand");
+        }
+        if (userOption.equals("3")){
+            System.out.println("To quit game input quit or complete the game through making the correct drink");
+        }
+    
+        // scanner.close();
+    } 
+   
 }
