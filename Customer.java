@@ -1,5 +1,4 @@
 
-//import java.util.ArrayList;
 public class Customer {
     //Attributes
     String name;
@@ -35,10 +34,8 @@ public class Customer {
 
     /**
      * toString method to print customer name
-     * @return custoer name
+     * @return customer name
      */
-
-    @Override
     public String toString() {
         return name;
     }

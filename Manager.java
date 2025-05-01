@@ -61,10 +61,10 @@ public class Manager extends Person{
      * @param drink
      */
     public void talk(Barista barista, Drink drink){
-        if (sameLocation(barista)){ //if the barista's location is the same as the manager
+        if ((sameLocation(barista)) && (Barista.getBaristaIngre().isEmpty())){ //if the barista's location is the same as the manager and barista's inventory isn't empty
 
-            System.out.println("Manager: I'm Berta, your manager. Answer this trivia question right and you wil get a hint to find the ingredients for your " + drink.getName());//print greeting
-            System.out.println("Manager: " + question);//print question
+            System.out.println("Berta: I'm Berta, your manager. Answer this trivia question right and you wil get a hint to find the ingredients for your " + drink.getName());//print greeting
+            System.out.println("Berta: " + question);//print question
 
             String response_1 = input.nextLine();//user inputs answer to question
 
@@ -75,27 +75,27 @@ public class Manager extends Person{
                 System.out.println("Wrong answer, no hint for you!");
             }
         }
-        if (sameLocation(barista) && !Barista.getBaristaIngre().isEmpty() && barista.getCurrentRoom().getName().toString().equals("Willowhush Forest") ){
-            System.out.println("Manager: Hi! would you like a hint to find your way back to the cafe?"); ;// asking
+        if (sameLocation(barista) && (!Barista.getBaristaIngre().isEmpty()) && (barista.getCurrentRoom().getName().equals("Willowhush Forest"))){
+            System.out.println("Berta: Hi! would you like a hint to find your way back to the cafe?"); ;// asking
             String response_2 = input.nextLine();
 
             if(response_2.trim().equalsIgnoreCase("yes")){
-                System.out.println("Manager: Go in the directions that start with 'N' then 'E'.");
+                System.out.println("Berta: Go in the directions that start with 'N' then 'W'.");
             }
             else if (response_2.trim().equalsIgnoreCase("no")){
-                System.out.println("Manager: Fine.");
+                System.out.println("Berta: Fine.");
             }
         }
             
-        if (sameLocation(barista) && !Barista.getBaristaIngre().isEmpty() && barista.getCurrentRoom().getName().toString().equals("Brooknest Cavern")){
-            System.out.println("Manager: Hi! would you like a hint to find your way back to the cafe?"); ;// asking if they want a hint
+        if (sameLocation(barista) && (!Barista.getBaristaIngre().isEmpty()) && (barista.getCurrentRoom().getName().equals("Brooknest Cavern"))){
+            System.out.println("Berta: Hi! would you like a hint to find your way back to the cafe?"); ;// asking if they want a hint
             String response_3 = input.nextLine();
 
             if(response_3.trim().equalsIgnoreCase("yes")){
-                System.out.println("Manager: Go in the directions that start with 'N' twice, then 'W' twice. ");
+                System.out.println("Berta: Go in the directions that start with 'N' twice, then 'W' twice. ");
             }
             else if (response_3.trim().equalsIgnoreCase("no")){
-                System.out.println("Manager: Fine.");
+                System.out.println("Berta: Fine.");
             }
         }
         else{ //if barista is not in the same location as manager, then return nothing

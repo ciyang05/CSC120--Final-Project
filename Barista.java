@@ -12,14 +12,14 @@ public class Barista extends Person {
     private int colIndex;
    
     // if player enters quit
-    private boolean quitFlag = false;
+    private boolean quitFlag = false; 
 
     // related to map 
-    private Map myMap;
-    private Room currentRoom;
+    private Map myMap; // map player is in 
+    private Room currentRoom; // holds player's current room location
     
-    private String answer;
-    private String direction;
+    private String answer; // holds player's answer
+    private String direction; // holds player's answer to which direction they'd like to move
 
     // barista/player's inventory, will hold ingredients that barista grabs
     private static ArrayList<Ingredient> baristaIngre;
@@ -100,7 +100,7 @@ public class Barista extends Person {
      * @return baristaIngre
      */
     public static ArrayList <Ingredient> getBaristaIngre() {
-        return baristaIngre;
+        return Barista.baristaIngre;
     }
 
     /**
@@ -149,10 +149,16 @@ public class Barista extends Person {
      */
     public void talk(Manager Berta, Drink custDrink) {
         // System.out.println(custDrink.getName());
-        if ((currentRoom.getIndicies().equals("[1, 1]"))) {
+        if (((currentRoom.getIndicies().equals("[1, 1]")) || (currentRoom.getIndicies().equals("[2, 2]"))) && (baristaIngre.isEmpty())) {
             System.out.println("You come across Oak & Ember Cafe's notorious manager, Berta.");
             Berta.talk(this, custDrink);
-        } else if (((currentRoom.getIndicies().equals("[2, 2]")))) {
+        } 
+        // if ((currentRoom.getIndicies().equals("[2, 2]")) && (baristaIngre.isEmpty())) {
+        //     System.out.println("You come across Oak & Ember Cafe's notorious manager, Berta.");
+        //     Berta.talk(this, custDrink);
+        // }
+        if (((currentRoom.getIndicies().equals("[1, 1]")) || (currentRoom.getIndicies().equals("[2, 2]"))) && (!baristaIngre.isEmpty())) {
+            // System.out.println(currentRoom.getIndicies());
             System.out.println("You come across Oak & Ember Cafe's notorious manager, Berta.");
             Berta.talk(this, custDrink);
         }
@@ -184,6 +190,12 @@ public class Barista extends Person {
                     answer = input.nextLine().toLowerCase();
                     if (answer.equals("hand")) {
                         handDrink(myDrink);
+                    } while (!answer.equals("hand")) {
+                        System.out.println("You did not type 'hand.' Try again.");
+                        answer = input.nextLine().toLowerCase();
+                        if (answer.equals("hand")) {
+                            handDrink(myDrink);
+                        }
                     }
                 }
                 if (custDrink.getName().equals("Matcha")) {
@@ -193,6 +205,12 @@ public class Barista extends Person {
                     answer = input.nextLine().toLowerCase();
                     if (answer.equals("hand")) {
                         handDrink(myDrink);
+                    } while (!answer.equals("hand")) {
+                        System.out.println("You did not type 'hand.' Try again.");
+                        answer = input.nextLine().toLowerCase();
+                        if (answer.equals("hand")) {
+                            handDrink(myDrink);
+                        }
                     }
                     
                 }
@@ -203,7 +221,13 @@ public class Barista extends Person {
                     answer = input.nextLine().toLowerCase();
                     if (answer.equals("hand")) {
                         handDrink(myDrink);
-                    } 
+                    } while (!answer.equals("hand")) {
+                        System.out.println("You did not type 'hand.' Try again.");
+                        answer = input.nextLine().toLowerCase();
+                        if (answer.equals("hand")) {
+                            handDrink(myDrink);
+                        }
+                    }
                 }
 
             } else {
@@ -232,7 +256,7 @@ public class Barista extends Person {
      */
     public void move(Drink custDrink) {
         
-        System.out.println("Where would you like to go? Your options are north, east, south, or west.");
+        System.out.println("Where would you like to go? Your options are north, east, south, or west. Type a direction.");
         System.out.println("If you would like to quit the game, type 'quit'.");
         direction = input.nextLine().toLowerCase();
 
@@ -259,11 +283,16 @@ public class Barista extends Person {
                 // System.out.println("current colIndex:" + colIndex);
                 currentRoom = myMap.getArray_Map()[rowIndex][colIndex];
                 leftCafe();
-                System.out.println(currentRoom.toString());
+                if (!currentRoom.getIndicies().equals("[0, 0]")) {
+                    System.out.println(currentRoom.toString());
+                }
                 // System.out.println("Current room indicies" + currentRoom.getIndicies());
                 enterCafe();
                 checkRoomIngre(custDrink);
-                talk(new Manager("Berta", myMap, 1, 1), custDrink);
+                if (currentRoom.getIndicies().equals("[1, 1]")) {
+                    talk(new Manager("Berta", myMap, 1, 1), custDrink);
+                }
+                // talk(new Manager("Berta", myMap, 1, 1), custDrink);
                 System.out.println("To empty your inventory, type 'drop' at any point in your adventure.");
                 finished(custDrink);
             } else {
@@ -289,7 +318,11 @@ public class Barista extends Person {
                 // System.out.println("Current room indicies" + currentRoom.getIndicies());
                 enterCafe();
                 checkRoomIngre(custDrink);
-                talk(new Manager("Berta", myMap, 1, 1), custDrink);
+                if (currentRoom.getIndicies().equals("[1, 1]")) {
+                    talk(new Manager("Berta", myMap, 1, 1), custDrink);
+                } else if (currentRoom.getIndicies().equals("[2, 2]")) {
+                    talk(new Manager("Berta", myMap, 2, 2), custDrink);
+                }
                 System.out.println("To empty your inventory, type 'drop' at any point in your adventure.");
                 finished(custDrink);
             } else {
@@ -311,11 +344,15 @@ public class Barista extends Person {
                 // System.out.println("current rowIndex:" + rowIndex);
                 currentRoom = myMap.getArray_Map()[rowIndex][colIndex];
                 leftCafe();
-                System.out.println(currentRoom.toString());
+                if (!currentRoom.getIndicies().equals("[0, 0]")) {
+                    System.out.println(currentRoom.toString());
+                }
                 // System.out.println("Current room indicies" + currentRoom.getIndicies());
                 enterCafe();
                 checkRoomIngre(custDrink);
-                talk(new Manager("Berta", myMap, 1, 1), custDrink);
+                if (currentRoom.getIndicies().equals("[1, 1]")) {
+                    talk(new Manager("Berta", myMap, 1, 1), custDrink);
+                } 
                 System.out.println("To empty your inventory, type 'drop' at any point in your adventure.");
                 finished(custDrink);
             } else {
@@ -342,8 +379,12 @@ public class Barista extends Person {
                 // System.out.println("Current room indicies" + currentRoom.getIndicies());
                 enterCafe();
                 checkRoomIngre(custDrink);
+                if (currentRoom.getIndicies().equals("[1, 1]")) {
+                    talk(new Manager("Berta", myMap, 1, 1), custDrink);
+                } else if (currentRoom.getIndicies().equals("[2, 2]")) {
+                    talk(new Manager("Berta", myMap, 2, 2), custDrink);
+                }
                 System.out.println("To empty your inventory, type 'drop' at any point in your adventure.");
-                talk(new Manager("Berta", myMap, 1, 1), custDrink);
                 finished(custDrink);
 
             } else {
@@ -357,6 +398,9 @@ public class Barista extends Person {
     }
 
 
+    /**
+     * turns hasLeftCafe boolean true when player has left cafe 
+     */
     public void leftCafe() {
         //System.out.println(hasLeftCafe);
         if (!currentRoom.getIndicies().equals("[0, 0]")) {
@@ -366,8 +410,12 @@ public class Barista extends Person {
     }
 
 
+    /**
+     * does not allow player to enter cafe if they did not collect ingredients yet 
+     * ingredients are the "key" to enter the cafe again
+     */
     public void enterCafe() {
-        System.out.println(direction);
+        // System.out.println(direction);
         if ((hasLeftCafe) && (baristaIngre.isEmpty()) && (currentRoom.getIndicies().equals("[0, 0]"))) {
             System.out.println("You cannot enter the Cafe until you collect the ingredients!");
             // System.out.println("The direction entered is " + direction);
@@ -524,43 +572,43 @@ public class Barista extends Person {
 
 
 
-    // will be in main class
-    public String toString() {
-        return "Let's get started " + getName() + "! Type 'go' to start your adventure!";
-    }
+    // // will be in main class
+    // public String toString() {
+    //     return "Let's get started " + getName() + "! Type 'go' to start your adventure!";
+    // }
 
 
 
 
-    // debugging purposes
-    public static void main(String[] args) {
+    // // debugging purposes
+    // public static void main(String[] args) {
 
-        ArrayList<Ingredient>customerIngredient = new ArrayList<>();
+    //     ArrayList<Ingredient>customerIngredient = new ArrayList<>();
 
-        customerIngredient.add(new Ingredient("a", "b", 0));
-        customerIngredient.add(new Ingredient("a", "b", 0));
-        customerIngredient.add(new Ingredient("a", "b", 0));
-        customerIngredient.add(new Ingredient("a", "b", 0));
+    //     customerIngredient.add(new Ingredient("a", "b", 0));
+    //     customerIngredient.add(new Ingredient("a", "b", 0));
+    //     customerIngredient.add(new Ingredient("a", "b", 0));
+    //     customerIngredient.add(new Ingredient("a", "b", 0));
 
-        // System.out.println(customerIngredient);
+    //     // System.out.println(customerIngredient);
 
-        // System.out.println(customerIngredient.toString());
-        System.out.println("Welcome to the game!");
-        Barista myBarista = new Barista("Chiashi");
-        System.out.println(myBarista);
-        String startGame = input.nextLine().toLowerCase();
-        if (startGame.equals("go")) {
+    //     // System.out.println(customerIngredient.toString());
+    //     System.out.println("Welcome to the game!");
+    //     Barista myBarista = new Barista("Chiashi");
+    //     System.out.println(myBarista);
+    //     String startGame = input.nextLine().toLowerCase();
+    //     if (startGame.equals("go")) {
 
-            // while it is false, once it is true = breaks loop
-            while (!myBarista.getQuit()) {
-                myBarista.move(custDrink);
-            }
-        } else {
-            System.out.println("Try answering again. Please enter 'go' or 'Go'");
-            String start = input.nextLine();
-        }
+    //         // while it is false, once it is true = breaks loop
+    //         while (!myBarista.getQuit()) {
+    //             myBarista.move(custDrink);
+    //         }
+    //     } else {
+    //         System.out.println("Try answering again. Please enter 'go' or 'Go'");
+    //         String start = input.nextLine();
+    //     }
 
 
-    }
+    // }
 
 }

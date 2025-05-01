@@ -5,6 +5,9 @@ import java.util.Scanner;
 public class Cafe {
 
     public static void main(String[] args) {
+        System.out.println("Welcome to Cafe Chronicles!");
+        System.out.println("If you need help with commands at any point in the your adventure, type 'help'.");
+
         ArrayList<Drink> drinks = new ArrayList<>();
         // Latte Drink
 
@@ -26,8 +29,6 @@ public class Cafe {
         Barista myBarista = new Barista("Kiara");
 
         // Barista.customerIngredient = new ArrayList<>();
-    
-        System.out.println("If you need help with commands at any point in the your adventure, type 'help'.");
 
         // Loop checks if customer ingredients are equal to drink ingredients
         while (!Barista.getCustomerIngredient().toString().equals(myDrink.getIngredients().toString())){ 
@@ -117,13 +118,13 @@ public class Cafe {
     // String helpVar = scanner.nextLine();
      
     // if (helpVar.equals("help")){
-        System.out.println("What do you need help with: \n 1: Directions \n 2: Commands \n 3. Quit");
+        System.out.println("What do you need help with:\n1: Directions\n2: Commands\n3. Quit\nType the number that corresponds with the option.");
         String userOption = scanner.nextLine();
         if (userOption.equals("1")){
-            System.out.println("To go south input south \n to go north input north \n to go east input east \n to go west input west");
+            System.out.println("To go south input south\nto go north input north\nto go east input east\nto go west input west");
         }
         if (userOption.equals("2")){
-            System.out.println("To grab input grab\n to make drink input drink \n to hand drink input hand");
+            System.out.println("To grab input grab\nto make drink input drink\nto hand drink input hand");
         }
         if (userOption.equals("3")){
             System.out.println("To quit game input quit or complete the game through making the correct drink");
