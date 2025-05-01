@@ -13,58 +13,104 @@ public class Manager extends Person{
     private Map map;
 
 
-    //Constructor that also gives Berta her positions
-    public Manager (String Berta, Map map, int row, int col) {
+    
+    /** Constructor that also gives Berta her positions
+     * @param Berta
+     * @param map
+     * @param row
+     * @param col
+     */
+    public Manager (String Berta, Map map, int row, int col) { 
         super(Berta);
         // this.x = x;
         // this.y = y;
         this.managerLocation = map.getArray_Map()[row][col];
     }
 
-    //getter for the manager's location
+    /**
+     * getter for the manager's location
+     * @return
+     */
     public Room getManagerLocation(){
         return managerLocation;
     }
 
-    //setter for the manager's location
+    
+    /**
+     * setter for the manager's location
+     * @param row
+     * @param col
+     */
     public void setManagerLocation(int row, int col){
         this.managerLocation = map.getArray_Map()[row][col];
     }
 
 
-    //Checking if the barista is at the same location as manager
+    /**
+     * checking if the barista is at the same location as manager
+     * @param barista
+     * @return
+     */
     public boolean sameLocation(Barista barista){
         return barista.getCurrentRoom().equals(managerLocation); //if the locations are the same, returns boolean
     }
 
-    // Talk method 
+    /**
+     * Dialog between manager and barista according to their locations
+     * @param barista
+     * @param drink
+     */
     public void talk(Barista barista, Drink drink){
         if (sameLocation(barista)){ //if the barista's location is the same as the manager
 
-            System.out.println("Manager: I'm Berta, your manager. Answer this trivia question right and you wil get a hint to find the ingredients for your" + drink.getName());//print greeting
+            System.out.println("Manager: I'm Berta, your manager. Answer this trivia question right and you wil get a hint to find the ingredients for your " + drink.getName());//print greeting
             System.out.println("Manager: " + question);//print question
 
-            String response = input.nextLine();//user inputs answer to question
+            String response_1 = input.nextLine();//user inputs answer to question
 
-            if (response.trim().equalsIgnoreCase(correctAnswer)){ //if the user's response is the correct answer; IgnoreCase ignores the caps and such
+            if (response_1.trim().equalsIgnoreCase(correctAnswer)){ //if the user's response is the correct answer; IgnoreCase ignores the caps and such
                 giveHint(drink); //call the giveHint method which print the clue according to the drink
             }
             else { //if answers is wrong, print wrong
                 System.out.println("Wrong answer, no hint for you!");
             }
         }
-        if (sameLocation(barista) && !getBaristaIngre().isempty ){
+        if (sameLocation(barista) && !Barista.getBaristaIngre().isEmpty() && barista.getCurrentRoom().getName().toString().equals("Willowhush Forest") ){
+            System.out.println("Manager: Hi! would you like a hint to find your way back to the cafe?"); ;// asking
+            String response_2 = input.nextLine();
 
+            if(response_2.trim().equalsIgnoreCase("yes")){
+                System.out.println("Manager: Go in the directions that start with 'N' then 'E'.");
+            }
+            else if (response_2.trim().equalsIgnoreCase("no")){
+                System.out.println("Manager: Fine.");
+            }
         }
-        else { //if barista is not in the same location as manager, then return nothing
+            
+        if (sameLocation(barista) && !Barista.getBaristaIngre().isEmpty() && barista.getCurrentRoom().getName().toString().equals("Brooknest Cavern")){
+            System.out.println("Manager: Hi! would you like a hint to find your way back to the cafe?"); ;// asking if they want a hint
+            String response_3 = input.nextLine();
+
+            if(response_3.trim().equalsIgnoreCase("yes")){
+                System.out.println("Manager: Go in the directions that start with 'N' twice, then 'W' twice. ");
+            }
+            else if (response_3.trim().equalsIgnoreCase("no")){
+                System.out.println("Manager: Fine.");
+            }
+        }
+        else{ //if barista is not in the same location as manager, then return nothing
             return;
         }
     }
 
-    //Gives hint according to the drink
+
+    /**
+     * Gives hint according to the drink
+     * @param drink
+     */
     public void giveHint(Drink drink){
         if(drink.getName().equals("Latte")){ //if the drink chosen is the same as matcha
-            System.out.println("To find the ingredients for " + drink.getName() + ", go in the directions that star with 'N' and 'E'"); //give hint
+            System.out.println("To find the ingredients for " + drink.getName() + ", go in the direction that starts with 'N' then go in the direction that starts with 'E'"); //give hint
         }
         else if(drink.getName().equals("Matcha")){
             System.out.println("To find the ingredients for " + drink.getName() + ", go in the direction that starts with 'S'");

@@ -53,18 +53,37 @@ public class Map {
         return arrayMap;
     }
 
+    /**
+     * accesses max number of rows
+     * @return maxRow
+     */
     public int getMaxRow() {
         return maxRow;
     }
 
+
+    /**
+     * accesses max number of columns
+     * @return maxCol
+     */
     public int getMaxCol() {
         return maxCol;
     }
 
+
+    /**
+     * accesses least number of rows
+     * @return leastRow
+     */
     public int getLeastRow() {
         return leastRow;
     }
 
+
+    /**
+     * accesses least number of columns
+     * @return leastCol
+     */
     public int getLeastCol() {
         return leastCol;
     }

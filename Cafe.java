@@ -17,19 +17,48 @@ public class Cafe {
 
         Drink myDrink = getRandomDrink(drinks);
 
-        Customer computer = new Customer("Computer");
-        computer.orderDrink(myDrink);
+        
 
-        Barista barista = new Barista("Kiara");
+        // Barista.customerIngredient.add(new Ingredient("a", "b", 0));
+        // Barista.customerIngredient.add(new Ingredient("a", "b", 0));
+        // Barista.customerIngredient.add(new Ingredient("a", "b", 0));
+        // Barista.customerIngredient.add(new Ingredient("a", "b", 0));
 
-        while (!Barista.getBaristaIngre().equals(myDrink.getIngredients())){
-            System.out.println("Barista is still working");
+        // System.out.println(Barista.customerIngredient);
+
+
+        Customer myCustomer = new Customer("Chiashi");
+        myCustomer.orderDrink(myDrink);
+
+
+        Barista myBarista = new Barista("Kiara");
+
+        Barista.customerIngredient = new ArrayList<>();
+    
+
+        while (!myBarista.getCustomerIngredient().toString().equals(myDrink.getIngredients().toString())){
+            myBarista.move(myDrink);
+             
+            //System.out.println("Barista is still working");
+            if (myBarista.getQuit()){
+                //System.out.println("You decided to quit");
+                break;
             
         
+            }    
+
+            if (myBarista.getCustomerIngredient().toString().equals(myDrink.getIngredients().toString())){
+                break;
+            }
+        
         }
+        System.out.println("You completed the game!");
 
         
     }
+
+        
+
 
     public static Drink getRandomDrink(ArrayList<Drink> drinks) {
         Random random = new Random();
