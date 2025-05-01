@@ -358,7 +358,7 @@ public class Barista extends Person {
 
 
     public void leftCafe() {
-        System.out.println(hasLeftCafe);
+        //System.out.println(hasLeftCafe);
         if (!currentRoom.getIndicies().equals("[0, 0]")) {
             hasLeftCafe = true;
             // System.out.println(hasLeftCafe);
@@ -485,7 +485,7 @@ public class Barista extends Person {
      * @param custDrink
      */
     public void checkRoomIngre(Drink custDrink) {
-        if ((currentRoom.getIndicies().equals("[0, 2]")) && (custDrink.getName().toString().equals("Latte"))) {
+        if ((currentRoom.getIndicies().equals("[0, 2]")) && (custDrink.getName().toString().equals("Latte")) && (baristaIngre.isEmpty())) {
             System.out.println("The " + currentRoom.getName() + " has ingredients for a " + custDrink.getName() + ". Would you like to pick it up? If so, type 'grab'. If not, type 'no'.");
             answer = input.nextLine().toLowerCase();
 
@@ -497,7 +497,7 @@ public class Barista extends Person {
             }
         }
 
-        if ((currentRoom.getIndicies().equals("[1, 2]")) && (custDrink.getName().toString().equals("Americano"))) {
+        if ((currentRoom.getIndicies().equals("[1, 2]")) && (custDrink.getName().toString().equals("Americano")) && (baristaIngre.isEmpty())) {
             System.out.println("The " + currentRoom.getName() + " has ingredients for a " + custDrink.getName() + ". Would you like to pick it up? If so, type 'grab'. If not, type 'no'.");
             answer = input.nextLine().toLowerCase();
 
@@ -509,7 +509,7 @@ public class Barista extends Person {
             }
         }
 
-        if ((currentRoom.getIndicies().equals("[2, 1]")) && (custDrink.getName().toString().equals("Matcha"))) {
+        if ((currentRoom.getIndicies().equals("[2, 1]")) && (custDrink.getName().toString().equals("Matcha")) && (baristaIngre.isEmpty())) {
             System.out.println("The " + currentRoom.getName() + " has ingredients for a " + custDrink.getName() + ". Would you like to pick it up? If so, type 'grab'. If not, type 'no'.");
             answer = input.nextLine().toLowerCase();
 

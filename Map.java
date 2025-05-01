@@ -16,7 +16,7 @@ public class Map {
         arrayMap[0][0] = new Room("Oak & Ember Cafe");
         arrayMap[0][0].setLocation(0,0);
 
-        arrayMap[0][1] = new Room("Willowhust Forest");
+        arrayMap[0][1] = new Room("Willowhush Forest");
         arrayMap[0][1].setLocation(0,1);
 
         arrayMap[0][2] = new Room("Willowhush Forest", new Ingredient("Caramel Syrup", "pumps", 2), new Ingredient("Brown Sugar", "teaspoons", 10), new Ingredient("Whole Milk", "Cups", 0.5), new Ingredient("Espresso", "shots", 2));
