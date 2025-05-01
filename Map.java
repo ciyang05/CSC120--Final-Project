@@ -48,7 +48,7 @@ public class Map {
      * accesses the actual 2D array map, not the object map
      * @return
      */
-    public Room [][] getArray_Map() {
+    public Room [][] getArrayMap() {
         return arrayMap;
     }
 

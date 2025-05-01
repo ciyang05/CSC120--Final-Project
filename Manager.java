@@ -24,7 +24,7 @@ public class Manager extends Person{
         super(Berta);
         // this.x = x;
         // this.y = y;
-        this.managerLocation = map.getArray_Map()[row][col];
+        this.managerLocation = map.getArrayMap()[row][col];
     }
 
     /**
@@ -42,7 +42,7 @@ public class Manager extends Person{
      * @param col
      */
     public void setManagerLocation(int row, int col){
-        this.managerLocation = map.getArray_Map()[row][col];
+        this.managerLocation = map.getArrayMap()[row][col];
     }
 
 
