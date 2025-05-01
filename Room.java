@@ -64,14 +64,26 @@ public class Room {
         return ingre_1;
     }
 
+    /**
+     * accessor for ingredient 2
+     * @return
+     */
     public Ingredient getIngre2() {
         return ingre_2;
     }
 
+    /**
+     * accessor for ingredient 3
+     * @return
+     */
     public Ingredient getIngre3() {
         return ingre_3;
     }
 
+    /**
+     * accessor for ingredient 4
+     * @return
+     */
     public Ingredient getIngre4() {
         return ingre_4;
     }
