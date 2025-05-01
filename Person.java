@@ -23,19 +23,6 @@ public class Person {
     public String getName() {
         return name;
     }
-
-
-    /**
-     * accesses the Scanner named input
-     * @return input
-     */
-    public Scanner getInput() {
-        return input;
-    }
-
-    public void talk() {
-
-    }
     
 }
 
