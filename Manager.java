@@ -69,7 +69,7 @@ public class Manager extends Person{
             String response_1 = input.nextLine();//user inputs answer to question
 
             if (response_1.trim().equalsIgnoreCase(correctAnswer)){ //if the user's response is the correct answer; IgnoreCase ignores the caps and such
-                giveHint(drink); //call the giveHint method which print the clue according to the drink
+                giveHint(drink, barista); //call the giveHint method which print the clue according to the drink
             }
             else { //if answers is wrong, print wrong
                 System.out.println("Wrong answer, no hint for you!");
@@ -108,19 +108,25 @@ public class Manager extends Person{
      * Gives hint according to the drink
      * @param drink
      */
-    public void giveHint(Drink drink){
-        if(drink.getName().equals("Latte")){ //if the drink chosen is the same as matcha
+    public void giveHint(Drink drink, Barista barista){
+        if ((drink.getName().equals("Latte")) && (barista.getCurrentRoom().getIndicies().equals("[1, 1]"))) { //if the drink chosen is the same as matcha
             System.out.println("To find the ingredients for " + drink.getName() + ", go in the direction that starts with 'N' then go in the direction that starts with 'E'"); //give hint
+        } else if ((drink.getName().equals("Latte")) && (barista.getCurrentRoom().getIndicies().equals("[2, 2]"))) {
+            System.out.println("To find the ingredients for " + drink.getName() + ", go in the direction that starts with 'N' two times.");
         }
-        else if(drink.getName().equals("Matcha")){
+         
+        if((drink.getName().equals("Matcha")) && (barista.getCurrentRoom().getIndicies().equals("[1, 1]"))){
             System.out.println("To find the ingredients for " + drink.getName() + ", go in the direction that starts with 'S'");
+        } else if ((drink.getName().equals("Matcha")) && (barista.getCurrentRoom().getIndicies().equals("[2, 2]"))) {
+            System.out.println("To find the ingredients for " + drink.getName() + ", go in the direction that starts with 'W'");
         }
-        else if (drink.getName().equals("Americano")){
+          
+        if ((drink.getName().equals("Americano")) && (barista.getCurrentRoom().getIndicies().equals("[1, 1]"))){
             System.out.println("To find the ingredients for " + drink.getName() + ", go in the direction that starts with 'E'"); //add drinks as needed, not finished yet
+        } else if ((drink.getName().equals("Americano")) && (barista.getCurrentRoom().getIndicies().equals("[2, 2]"))) {
+            System.out.println("To find the ingredients for " + drink.getName() + ", go in the direction that starts with 'N'");
         }
-        else {
-            return;
-        }
+        
     }
 
 
