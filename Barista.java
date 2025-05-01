@@ -46,23 +46,6 @@ public class Barista extends Person {
         Barista.baristaIngre = new ArrayList<>();
     }
 
-
-    /**
-     * accessor for row index, which row barista is at
-     * @return rowIndex
-     */
-    public int getRow() {
-        return rowIndex;
-    }
-
-    /**
-     * accessor for column index, which column barista is at
-     * @return columnIndex
-     */
-    public int getCol() {
-        return colIndex;
-    }
-
     /**
      * accesses boolean value of quitFlag
      * @return quitFlag
@@ -273,7 +256,7 @@ public class Barista extends Person {
 
         if (direction.equals("north")) {
             // System.out.println("The indicies before moving are " + currentRoom.getIndicies());
-            int tempRow = getRow() - 1;
+            int tempRow = rowIndex - 1;
             // System.out.println("this is tempRow:" + tempRow);
             
             if ((tempRow <= myMap.getMaxRow()) && (tempRow >= myMap.getLeastRow())) {
@@ -304,7 +287,7 @@ public class Barista extends Person {
 
         if (direction.equals("south")) {
             // System.out.println("The indicies before moving are " + currentRoom.getIndicies());
-            int tempRow = getRow() + 1;
+            int tempRow = rowIndex + 1;
             // System.out.println("this is tempRow:" + tempRow);
             
             if ((tempRow <= myMap.getMaxRow()) && (tempRow >= myMap.getLeastRow())) {
@@ -334,7 +317,7 @@ public class Barista extends Person {
 
         if (direction.equals("west")) {
             // System.out.println("The indicies before moving are " + currentRoom.getIndicies());
-            int tempCol = getCol() - 1;
+            int tempCol = colIndex - 1;
             // System.out.println("this is tempCol:" + tempCol);
             
             if ((tempCol <= myMap.getMaxCol()) && (tempCol >= myMap.getLeastCol())) {
@@ -365,7 +348,7 @@ public class Barista extends Person {
         
         if (direction.equals("east")) {
             // System.out.println("The indicies before moving are " + currentRoom.getIndicies());
-            int tempCol = getCol() + 1;
+            int tempCol = colIndex + 1;
             // System.out.println("this is tempCol:" + tempCol);
             
             if ((tempCol <= myMap.getMaxCol()) && (tempCol >= myMap.getLeastCol())) {
