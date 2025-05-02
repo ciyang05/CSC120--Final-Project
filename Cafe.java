@@ -5,8 +5,25 @@ import java.util.Scanner;
 public class Cafe {
 
     public static void main(String[] args) {
-        System.out.println("Welcome to Cafe Chronicles!");
-        System.out.println("If you need help with commands at any point in the your adventure, type 'help'.");
+
+        Scanner input = new Scanner(System.in);
+        
+        System.out.println("Welcome to the adventure of Cafe Chronicles! To start playing, type 'go'");
+        String answer = input.nextLine().toLowerCase();
+        if (answer.equals("go")) {
+            System.out.println("The scent of freshly ground coffee beans fills the air.\nYour adventure begins in the Oak & Ember Cafe.");
+            System.out.println("If you need help with commands at any point in the your adventure, type 'help'.");
+        } else {
+            System.out.println("You did not type 'go'. Try again.");
+            answer = input.nextLine().toLowerCase();
+            if (answer.equals("go")) {
+                System.out.println("The scent of freshly ground coffee beans fills the air.\nYour adventure begins in the Oak & Ember Cafe.");
+                System.out.println("If you need help with commands at any point in the your adventure, type 'help'.");
+            }
+        }
+
+        Manager.addRiddle();
+
 
         ArrayList<Drink> drinks = new ArrayList<>();
         // Latte Drink
@@ -49,7 +66,7 @@ public class Cafe {
         }
         // Loop ends once customer ingredients are equal to drink ingredients
         System.out.println("You completed the game!");
-
+        input.close();
         
     }
 
@@ -121,16 +138,16 @@ public class Cafe {
         System.out.println("What do you need help with:\n1: Directions\n2: Commands\n3. Quit\nType the number that corresponds with the option.");
         String userOption = scanner.nextLine();
         if (userOption.equals("1")){
-            System.out.println("To go south input south\nto go north input north\nto go east input east\nto go west input west");
+            System.out.println("To go south input 'south'\nto go north input 'north'\nto go east input 'east'\nto go west input 'west'");
         }
         if (userOption.equals("2")){
-            System.out.println("To grab input grab\nto make drink input drink\nto hand drink input hand");
+            System.out.println("To grab input 'grab'\nto make drink input 'drink'\nto hand drink input 'hand'");
         }
         if (userOption.equals("3")){
-            System.out.println("To quit game input quit or complete the game through making the correct drink");
+            System.out.println("To quit game input 'quit' or complete the game through making the correct drink");
         }
     
         // scanner.close();
-    } 
+    }
    
 }
