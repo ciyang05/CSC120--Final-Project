@@ -2,11 +2,10 @@ This file will contain documentation for all commands available in your game.
 
 Note:  It's a good idea to also make this list available inside the game, in response to a `HELP` command.
 
-
 # SPOILER ALERT
-
 If your game includes challenges that must be overcome to win, also list them below.
 
+☕️ Cafe Chronicles Cheatsheet
 
 Basic Commands
 - move (north, south, east, west) > answer is case-insensitive 
@@ -14,6 +13,10 @@ Basic Commands
 - drop, can drop something at anytime in game > answer is case-insensitive 
 - help, to see which commands are available > answer is case-insensitive 
 
+For more details on the map and places, please look at the Map.jpg file. 
+
+
+Player must find ingredients and make it back to cafe in order to win. 
 Where To Go For Ingredients 
 - Drink: Matcha and Starting off from Oak & Ember Cafe
     - south

@@ -8,11 +8,11 @@ public class Cafe {
 
         Scanner input = new Scanner(System.in);
         
-        System.out.println("Welcome to the adventure of Cafe Chronicles! To start playing, type 'go'");
+        System.out.println(" ☕️ Welcome to the adventure of Cafe Chronicles! To start playing, type 'go'");
         String answer = input.nextLine().toLowerCase();
         if (answer.equals("go")) {
             System.out.println("The scent of freshly ground coffee beans fills the air.\nYour adventure begins in the Oak & Ember Cafe.");
-            System.out.println("If you need help with commands at any point in the your adventure, type 'help'.");
+            System.out.println("🆘 If you need help with commands at any point in the your adventure, type 'help'.");
         } else {
             System.out.println("You did not type 'go'. Try again.");
             answer = input.nextLine().toLowerCase();

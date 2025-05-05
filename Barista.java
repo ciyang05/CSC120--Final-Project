@@ -490,7 +490,7 @@ public class Barista extends Person {
             System.out.println("You have dropped all of your ingredients!");
             System.out.println("Updated inventory: " + baristaIngre.toString());
         } else {
-            System.out.println("Guess you don't want to empty your inventory!");
+            System.out.println("Inventory is empty. You cannot drop anything.");
         }
 
     }
@@ -505,7 +505,7 @@ public class Barista extends Person {
         // System.out.println("This is the barista inventory " + baristaIngre.toString());
         // System.out.println("This is the custDrink list " + custDrink.getIngredients().toString());
         if ((currentRoom.getIndicies().equals("[0, 0]")) && (baristaIngre.toString().equals(custDrink.getIngredients().toString()))) {
-            System.out.println("Congrats! You have made it back to the Cafe and have all your ingredients!");
+            System.out.println("☕️ Congrats! You have made it back to the Cafe and have all your ingredients!");
             makeDrink(custDrink);
     }}
 
