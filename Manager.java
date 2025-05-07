@@ -1,6 +1,5 @@
 import java.util.Scanner;
-// import java.nio.file.ReadOnlyFileSystemException;
-// import java.util.Arrays;
+
 
 
 public class Manager extends Person{
@@ -128,13 +127,8 @@ public class Manager extends Person{
         }
         
     }
-
-
-
-    // public static void main(String[] args) {
-    //     List<String> mLocations = Arrays.asList("Forest, Pond");
-    //     Manager manager = new Manager("Berta", mLocations);
-    // }
 }
 
-//make a map but for the barrista so it sets the barrista's location
+
+
+  
