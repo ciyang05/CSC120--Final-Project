@@ -1,12 +1,8 @@
 import java.util.Scanner;
-<<<<<<< HEAD
-
-
-=======
 // import java.nio.file.ReadOnlyFileSystemException;
 import java.util.ArrayList;
 import java.util.Collections;
->>>>>>> 6dd7467cc79244f8de758a961ccd3e08fcd5bcdc
+
 
 public class Manager extends Person{
     //Attributes
@@ -123,7 +119,7 @@ public class Manager extends Person{
         }
 
         // if barista already has ingredients and need help getting back to cafe
-        if (sameLocation(barista) && (!Barista.getBaristaIngre().isEmpty()) && (barista.getCurrentRoom().getName().equals("Willowhush Forest"))){
+        if (sameLocation(barista) && (!Barista.getBaristaIngre().isEmpty()) && (barista.getCurrentRoom().getName().equals("🌳 Willowhush Forest"))){
             System.out.println("Berta: Hi! Would you like a hint to find your way back to the Cafe?"); ;// asking
             String response_2 = input.nextLine();
 
@@ -135,7 +131,7 @@ public class Manager extends Person{
             }
         }
             
-        if (sameLocation(barista) && (!Barista.getBaristaIngre().isEmpty()) && (barista.getCurrentRoom().getName().equals("Brooknest Cavern"))){
+        if (sameLocation(barista) && (!Barista.getBaristaIngre().isEmpty()) && (barista.getCurrentRoom().getName().equals("🦇 Brooknest Cavern"))){
             System.out.println("Berta: Hi! Would you like a hint to find your way back to the Cafe?"); ;// asking if they want a hint
             String response_3 = input.nextLine();
 

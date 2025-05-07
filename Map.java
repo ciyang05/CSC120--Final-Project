@@ -9,6 +9,9 @@ public class Map {
     private int leastRow = 0;
     private int leastCol = 0;
 
+    /**
+     * constructor for map
+     */
     public Map() {
         this.arrayMap = new Room[3][3];
 
