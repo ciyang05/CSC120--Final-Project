@@ -1,16 +1,23 @@
 import java.util.Scanner;
+<<<<<<< HEAD
 
 
+=======
+// import java.nio.file.ReadOnlyFileSystemException;
+import java.util.ArrayList;
+import java.util.Collections;
+>>>>>>> 6dd7467cc79244f8de758a961ccd3e08fcd5bcdc
 
 public class Manager extends Person{
     //Attributes
     protected static String Berta; //name
     public static Scanner input = new Scanner(System.in); //scanner
-    private String question = "When the sun climbs high and thirst grips the realm, what sacred liquid do mortals most often crave to cool their flame—brewed from beans, dark as night?"; //question
-    private String correctAnswer = "Cold brew"; //answer
-    private Room managerLocation; //getting all the locations (might need to change)
+    private String question; // riddle question
+    private String correctAnswer; // answer
+    private Room managerLocation; // getting all the locations (might need to change)
     private Map map;
 
+    private static ArrayList <String> riddles = new ArrayList<>();
 
     
     /** Constructor that also gives Berta her positions
@@ -54,18 +61,58 @@ public class Manager extends Person{
         return barista.getCurrentRoom().equals(managerLocation); //if the locations are the same, returns boolean
     }
 
+
     /**
-     * Dialog between manager and barista according to their locations
+     * adds riddles to riddle list
+     */
+    public static void addRiddle() {
+        Manager.riddles.add("When the sun climbs high and thirst grips the realm, what sacred liquid do mortals most often crave to cool their flame—brewed from beans, dark as night?");
+        Manager.riddles.add("Morning magic in a steaming swirl. Dark as night with a bitter curl. Sip me slowly, I chase the yawn. Guess my name before I'm gone.");
+        Manager.riddles.add("I'm not your regular latte crew. I come in green, not brown or blue. I don't get brewed, I get whipped to glow. In every café I steal the show. What am I?");
+    }
+
+
+    /**
+     * checks riddle question and assigns answer to correctAnswer attribute according to riddle
+     */
+    public void checkRiddle() {
+        if (question.equals("When the sun climbs high and thirst grips the realm, what sacred liquid do mortals most often crave to cool their flame—brewed from beans, dark as night?")) {
+            correctAnswer = "cold brew";
+        } else if (question.equals("Morning magic in a steaming swirl. Dark as night with a bitter curl. Sip me slowly, I chase the yawn. Guess my name before I'm gone.")) {
+            correctAnswer = "coffee";
+        } else {
+            correctAnswer = "matcha";
+        }
+    }
+
+
+    /**
+     * Dialogue between manager and barista according to their locations
      * @param barista
      * @param drink
      */
     public void talk(Barista barista, Drink drink){
-        if ((sameLocation(barista)) && (Barista.getBaristaIngre().isEmpty())){ //if the barista's location is the same as the manager and barista's inventory isn't empty
+        // System.out.println("Normal riddle list:");
+        // for (String r : riddles) {
+        //     System.out.println(r);
+        // }
+
+        // if barista needs help finding ingredients
+        if ((sameLocation(barista)) && (Barista.getBaristaIngre().isEmpty())) { //if the barista's location is the same as the manager and barista's inventory isn't empty
+        
+            Collections.shuffle(Manager.riddles);
+            question = Manager.riddles.get(0);
+            checkRiddle();
+            
+            // System.out.println("Shuffled riddles:");
+            // for (String r : riddles) {
+            //     System.out.println(r);
+            // }
 
             System.out.println("Berta: I'm Berta, your manager. Answer this trivia question right and you wil get a hint to find the ingredients for your " + drink.getName());//print greeting
-            System.out.println("Berta: " + question);//print question
+            System.out.println("Berta: " + question); //print question
 
-            String response_1 = input.nextLine();//user inputs answer to question
+            String response_1 = input.nextLine(); // user inputs answer to question
 
             if (response_1.trim().equalsIgnoreCase(correctAnswer)){ //if the user's response is the correct answer; IgnoreCase ignores the caps and such
                 giveHint(drink, barista); //call the giveHint method which print the clue according to the drink
@@ -74,8 +121,10 @@ public class Manager extends Person{
                 System.out.println("Wrong answer, no hint for you!");
             }
         }
+
+        // if barista already has ingredients and need help getting back to cafe
         if (sameLocation(barista) && (!Barista.getBaristaIngre().isEmpty()) && (barista.getCurrentRoom().getName().equals("Willowhush Forest"))){
-            System.out.println("Berta: Hi! would you like a hint to find your way back to the cafe?"); ;// asking
+            System.out.println("Berta: Hi! Would you like a hint to find your way back to the Cafe?"); ;// asking
             String response_2 = input.nextLine();
 
             if(response_2.trim().equalsIgnoreCase("yes")){
@@ -87,7 +136,7 @@ public class Manager extends Person{
         }
             
         if (sameLocation(barista) && (!Barista.getBaristaIngre().isEmpty()) && (barista.getCurrentRoom().getName().equals("Brooknest Cavern"))){
-            System.out.println("Berta: Hi! would you like a hint to find your way back to the cafe?"); ;// asking if they want a hint
+            System.out.println("Berta: Hi! Would you like a hint to find your way back to the Cafe?"); ;// asking if they want a hint
             String response_3 = input.nextLine();
 
             if(response_3.trim().equalsIgnoreCase("yes")){
