@@ -16,12 +16,13 @@ public Drink(String name){
  
 /**
  * Method to add ingredients for each drink
+ * @param name,units,amount
  */
 public void addIngredient(String name, String units, double amount){
     ingredients.add(new Ingredient(name, units, amount));
 }
 /**
- * I'll do this eventually
+ * method to print out the list of ingredients for a specific drink
  */
 public void printIngredients() {
     System.out.println(name +" " + "Ingredients:");
